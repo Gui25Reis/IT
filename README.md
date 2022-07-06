@@ -45,8 +45,8 @@ UIKit           | Aplicação com view code
 
 ## Protótipos
 <p align="center">
-    <img width=98% src="https://github.com/Gui25Reis/IT/blob/feat/initialConfigs/Arquivos/Imagens/Prot%C3%B3tipo-01.png"/>
-    <img width=98% src="https://github.com/Gui25Reis/IT/blob/feat/initialConfigs/Arquivos/Imagens/Prot%C3%B3tipo-02.png"/>
+    <img width=98% src="https://github.com/Gui25Reis/IT/blob/main/Arquivos/Imagens/Prot%C3%B3tipo-01.png"/>
+    <img width=98% src="https://github.com/Gui25Reis/IT/blob/main/Arquivos/Imagens/Prot%C3%B3tipo-02.png"/>
 </p>
 
 
