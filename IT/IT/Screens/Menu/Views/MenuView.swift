@@ -143,6 +143,9 @@ class MenuView: UIView {
         self.setupUI()
         self.setupStaticTexts()
         self.setupDynamicConstraints()
+        
+        self.reloadInputViews()
+        self.reloadDocuments()
     }
     
     
@@ -168,13 +171,18 @@ class MenuView: UIView {
     private func setupUI() -> Void {
         self.documentsCollection.layer.cornerRadius = self.bounds.height * 0.016
         
+        let cellInLine: CGFloat = 7
+        let spaceBetweenCell = self.documentsCollection.bounds.width * 0.005
+        let sizeWithoutSpace = self.documentsCollection.bounds.width - (spaceBetweenCell*cellInLine)
+        
         // Layout
         let cellSize = CGSize(
-            width: self.documentsCollection.bounds.width * 0.13,
-            height: self.documentsCollection.bounds.height * 0.14
+            width: sizeWithoutSpace/cellInLine,
+            height: self.documentsCollection.bounds.height * 0.16
         )
+
         self.collectionLayout.itemSize = cellSize
-        self.reloadDocuments()
+        self.collectionLayout.minimumLineSpacing = spaceBetweenCell
     }
     
     
