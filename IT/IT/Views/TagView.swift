@@ -19,8 +19,6 @@ class TagView: UIView {
         
         self.setupViews()
         self.setupConstraints()
-        
-        self.setupTag(with: TagConfig(text: "Teste", color: .green))
     }
     
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
@@ -32,7 +30,9 @@ class TagView: UIView {
     /// Define as informaçòes da tag: texto e cor
     public func setupTag(with config: TagConfig) -> Void {
         self.tagLabel.text = config.text
-        self.backgroundColor = config.color
+        if let color = config.color {
+            self.backgroundColor = color
+        }
     }
     
     
@@ -43,7 +43,7 @@ class TagView: UIView {
         super.layoutSubviews()
         
         self.setupUI()
-        // self.setupStaticTexts()
+        self.setupStaticTexts()
         // self.setupDynamicConstraints()
     }
     
@@ -65,7 +65,9 @@ class TagView: UIView {
     
     /// Define os textos que são estáticos (os textos em si que vão sempre ser o mesmo)
     private func setupStaticTexts() -> Void {
-        
+        self.tagLabel.setupText(with: FontConfig(
+            fontSize: self.bounds.height*0.45, weight: .medium)
+        )
     }
     
     
@@ -79,11 +81,5 @@ class TagView: UIView {
             self.tagLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -space),
             self.tagLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -space),
         ])
-    }
-    
-    
-    /// Define as constraints que dependem do tamanho da tela
-    private func setupDynamicConstraints() -> Void {
-        
     }
 }

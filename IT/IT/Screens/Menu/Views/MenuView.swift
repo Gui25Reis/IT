@@ -7,6 +7,7 @@ class MenuView: UIView {
     
     /* MARK: - Atributos */
     
+    // Views
     private let titleLabel = CustomViews.newLabel()
     
     private let tagsButton = CustomViews.newButton()
@@ -15,6 +16,8 @@ class MenuView: UIView {
     
     private let documentsLabel = CustomViews.newLabel()
     
+    public let groupView = GroupView()
+    
     private let documentsCollection: UICollectionView = {
         let cv = CustomViews.newCollection()
         cv.register(DocumentsCell.self, forCellWithReuseIdentifier: DocumentsCell.identifier)
@@ -22,12 +25,16 @@ class MenuView: UIView {
     }()
     
     
+    // Outros
     private let collectionLayout: UICollectionViewFlowLayout = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         
         return layout
     }()
+    
+    /// Constraints que vão mudar de acordo com o tamanho da tela
+    private var dynamicConstraints: [NSLayoutConstraint] = []
     
     
     
@@ -41,7 +48,7 @@ class MenuView: UIView {
         self.setupViews()
         self.setupConstraints()
         
-        self.documentsCollection.backgroundColor = .tertiaryLabel
+        // self.documentsCollection.backgroundColor = .tertiaryLabel
     }
     
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
@@ -50,7 +57,43 @@ class MenuView: UIView {
     
     /* MARK: - Encapsulamento */
     
+    /* Ações de Botões */
+    
+    /// Ação do botão de adicionar um novo documento
+    public func setNewDocumentAction(target: Any?, action: Selector) -> Void {
+        self.newDocumentButton.addTarget(target, action: action, for: .touchDown)
+    }
+    
+    
+    /// Ação do botão de atualizar os dados da tela
+    public func setReloadAction(target: Any?, action: Selector) -> Void {
+        self.reloadButton.addTarget(target, action: action, for: .touchDown)
+    }
+    
+    
+    /// Ação do botão de tags
+    public func setTagsAction(target: Any?, action: Selector) -> Void {
+        self.tagsButton.addTarget(target, action: action, for: .touchDown)
+    }
+    
+    
+    // Group View
+    
+    /// Ação do botão de favoritos
+    public func setFavoriteAction(target: Any?, action: Selector) -> Void {
+        self.groupView.setFavoriteAction(target: target, action: action)
+    }
+    
+    
+    /// Ação do botão de manter um grupo
+    public func setNewGroupAction(target: Any?, action: Selector) -> Void {
+        self.groupView.setNewGroupAction(target: target, action: action)
+    }
+    
+    
     /* Collection */
+    
+    // Documentos
     
     /// Define qual vai ser o Data Source da collection
     public func setDocumentsCollectionDataSource(with dataSource: DocumentsDataSource) -> Void {
@@ -68,6 +111,26 @@ class MenuView: UIView {
     public func reloadDocuments() -> Void {
         self.documentsCollection.reloadData()
         self.documentsCollection.reloadInputViews()
+    }
+    
+    
+    // Grupos
+    
+    /// Define qual vai ser o Data Source da collection
+    public func setGroupCollectionDataSource(with dataSource: GroupDataSource) -> Void {
+        self.groupView.setGroupCollectionDataSource(with: dataSource)
+    }
+    
+    
+    /// Define qual vai ser o delegate da collection
+    public func setGroupCollectionDelegate(with delegate: GroupDelegate) -> Void {
+        self.groupView.setGroupCollectionDelegate(with: delegate)
+    }
+    
+    
+    /// Atualiza a tabela
+    public func reloadGroups() -> Void {
+        self.groupView.reloadGroups()
     }
     
     
@@ -95,6 +158,8 @@ class MenuView: UIView {
         self.addSubview(self.newDocumentButton)
         
         self.addSubview(self.documentsLabel)
+        self.addSubview(self.groupView)
+        
         self.addSubview(self.documentsCollection)
     }
     
@@ -105,13 +170,11 @@ class MenuView: UIView {
         
         // Layout
         let cellSize = CGSize(
-            width: self.documentsCollection.bounds.width * 0.15,
-            height: self.documentsCollection.bounds.height * 0.18
+            width: self.documentsCollection.bounds.width * 0.13,
+            height: self.documentsCollection.bounds.height * 0.14
         )
         self.collectionLayout.itemSize = cellSize
         self.reloadDocuments()
-        
-        // print("Tamanho da celula: \nAltura: \(self.documentsCollection.bounds.width * 0.15) | Largura: \(self.documentsCollection.bounds.height * 0.18)")
     }
     
     
@@ -146,8 +209,10 @@ class MenuView: UIView {
     private func setupConstraints() -> Void {
         NSLayoutConstraint.activate([
             self.titleLabel.trailingAnchor.constraint(equalTo: self.centerXAnchor),
+            self.titleLabel.leadingAnchor.constraint(equalTo: self.documentsCollection.leadingAnchor),
             
             // Botões da esquerda
+            self.newDocumentButton.trailingAnchor.constraint(equalTo: self.documentsCollection.trailingAnchor),
             self.newDocumentButton.centerYAnchor.constraint(equalTo: self.titleLabel.centerYAnchor),
             
             self.reloadButton.centerYAnchor.constraint(equalTo: self.newDocumentButton.centerYAnchor),
@@ -156,41 +221,46 @@ class MenuView: UIView {
             
             
             self.documentsLabel.trailingAnchor.constraint(equalTo: self.centerXAnchor),
+            self.documentsLabel.leadingAnchor.constraint(equalTo: self.documentsCollection.leadingAnchor),
             
-            self.documentsCollection.centerXAnchor.constraint(equalTo: self.centerXAnchor)
+            self.groupView.trailingAnchor.constraint(equalTo: self.documentsCollection.trailingAnchor),
+            self.groupView.leadingAnchor.constraint(equalTo: self.documentsCollection.leadingAnchor),
+            
+            self.documentsCollection.centerXAnchor.constraint(equalTo: self.centerXAnchor),
         ])
     }
     
     
     /// Define as constraints que dependem do tamanho da tela
     private func setupDynamicConstraints() -> Void {
+        NSLayoutConstraint.deactivate(self.dynamicConstraints)
+        
         let space = self.bounds.height*0.022
         let negSpace = -space/2
         
         let between: CGFloat = self.bounds.height*0.015
         
-        NSLayoutConstraint.activate([
+        self.dynamicConstraints = [
             self.titleLabel.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: space),
-            self.titleLabel.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: space),
-            
             
             // Botões da esquerda
             self.newDocumentButton.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: space),
-            self.newDocumentButton.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: negSpace),
             
             self.reloadButton.rightAnchor.constraint(equalTo: self.newDocumentButton.leftAnchor, constant: -between),
             
             self.tagsButton.rightAnchor.constraint(equalTo: self.reloadButton.leftAnchor, constant: -between),
             
+            // Corpo
+            self.documentsLabel.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor, constant: space*1.4),
             
-            self.documentsLabel.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: space),
-            self.documentsLabel.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor, constant: space*2),
+            self.groupView.topAnchor.constraint(equalTo: self.documentsLabel.bottomAnchor, constant: space*1.4),
+            self.groupView.heightAnchor.constraint(equalToConstant: self.bounds.height * 0.04),
             
-            
-            self.documentsCollection.topAnchor.constraint(equalTo: self.documentsLabel.bottomAnchor, constant: space),
-            self.documentsCollection.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: space),
-            self.documentsCollection.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: negSpace),
+            self.documentsCollection.topAnchor.constraint(equalTo: self.groupView.bottomAnchor, constant: space),
             self.documentsCollection.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: negSpace),
-        ])
+            self.documentsCollection.widthAnchor.constraint(equalToConstant: self.bounds.width * 0.98),
+        ]
+        
+        NSLayoutConstraint.activate(self.dynamicConstraints)
     }
 }

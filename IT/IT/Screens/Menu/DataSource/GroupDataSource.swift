@@ -3,18 +3,23 @@
 /* Bibliotecas necessárias: */
 import UIKit
 
-class TagsDataSource: NSObject, UICollectionViewDataSource {
+class GroupDataSource: NSObject, UICollectionViewDataSource {
     
     /* MARK: - Atributos */
-    
+    private var groups: [TagConfig] = []
     
     
     /* MARK: - Construtor */
     
-//    init(for book: SuecaCardBook) {
-//        self.book = book
-//        super.init()
-//    }
+    override init() {
+        super.init()
+        
+        let tag = TagConfig(text: "Academy", color: nil)
+        
+        for _ in 0..<5 {
+            self.groups.append(tag)
+        }
+    }
 
     
     
@@ -30,7 +35,7 @@ class TagsDataSource: NSObject, UICollectionViewDataSource {
     
     /// Mostra quantas células vão ser mostradas
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 0
+        return self.groups.count
     }
     
     
@@ -38,17 +43,15 @@ class TagsDataSource: NSObject, UICollectionViewDataSource {
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         // Cria uma variácel para mexer com uma célula que foi criada
-//        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainViewCollectionCell.identifier, for: indexPath) as? MainViewCollectionCell else {
-//            return UICollectionViewCell()
-//        }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TagCell.identifier, for: indexPath) as? TagCell else {
+            return UICollectionViewCell()
+        }
         
+        let tag = self.groups[indexPath.row]
+        cell.setupTag(with: tag)
         
-        return UICollectionViewCell()
+        cell.layer.cornerRadius = collectionView.bounds.height * 0.52
+        
+        return cell
     }
-    
-    
-    /* MARK: - Ações de Botões */
-    
-    /// Ação para deletar uma linha da tabela
-    
 }

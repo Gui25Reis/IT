@@ -10,6 +10,7 @@ class MenuViewController: UIViewController {
     /// View principal que a classe vai controlar
     private let myView = MenuView()
     
+    
     /* Delegates & DataSource */
     
     /// Delegate da collection dos documentos
@@ -17,6 +18,12 @@ class MenuViewController: UIViewController {
     
     /// Data Source da collection dos documentos
     private let documentsDataSource = DocumentsDataSource()
+    
+    /// Delegate da collection dos grupos
+    private let groupDelegate = GroupDelegate()
+    
+    /// Data Source da collection dos grupos
+    private let groupDataSource = GroupDataSource()
     
     
     
@@ -38,14 +45,9 @@ class MenuViewController: UIViewController {
         super.viewDidAppear(animated)
         
         self.setupDelegates()
-        self.myView.reloadDocuments()
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        
-        self.myView.reloadDocuments()
-    }
+
     
     /* MARK: - Ações de botões */
     
@@ -55,8 +57,16 @@ class MenuViewController: UIViewController {
     
     /// Configura os delegates e Data Sources das views
     private func setupDelegates() -> Void {
-        // Collection de docuemntos
+        // Collection de documentos
         self.myView.setDocumentsCollectionDelegate(with: self.documentsDelegate)
         self.myView.setDocumentsCollectionDataSource(with: self.documentsDataSource)
+        
+        // Collection de grupos
+        self.myView.setGroupCollectionDelegate(with: self.groupDelegate)
+        self.myView.setGroupCollectionDataSource(with: self.groupDataSource)
+        
+        // Atualizando as tabelas
+        self.myView.reloadGroups()
+        self.myView.reloadDocuments()
     }
 }

@@ -3,14 +3,36 @@
 
 /// Botões usados na aplicação
 enum AppButton: CustomStringConvertible {
+    /// Símbolo - 􀊫
     case search
+    
+    /// Símbolo - 􀈑
     case trash
+    
+    /// Símbolo - 􀊫
     case share
+    
+    /// Símbolo - 􀅼
     case add
+    
+    /// Símbolo - 􀅉
     case reload
+    
+    /// Símbolo - 􀍠
     case menu
+    
+    /// Símbolo - 􀋭
     case visible
+    
+    /// Símbolo - 􀋯
     case notVisible
+    
+    /// Símbolo - 􀠧
+    case favorite
+    
+    /// Símbolo - 􀃜
+    case addQuare
+    
     
     var description: String {
         switch self {
@@ -22,6 +44,8 @@ enum AppButton: CustomStringConvertible {
         case .menu: return "ellipsis"
         case .visible: return "eye"
         case .notVisible: return "eye.slash"
+        case .favorite: return "star.square"
+        case .addQuare: return "plus.square"
         }
     }
 }

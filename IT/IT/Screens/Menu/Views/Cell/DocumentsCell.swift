@@ -21,19 +21,21 @@ class DocumentsCell: UICollectionViewCell {
     
     private let tagsView = CustomViews.newView()
     
+    // Outros
+    
+    /// Constraints que vão mudar de acordo com o tamanho da tela
+    private var dynamicConstraints: [NSLayoutConstraint] = []
+    
     
     
     /* MARK: - Construtor */
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
+        self.backgroundColor = .secondarySystemBackground
 
         self.setupViews()
         self.setupConstraints()
-        
-        self.titleLabel.backgroundColor = .orange
-        self.tagsView.backgroundColor = .blue
-        self.backgroundColor = .black
     }
     
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
@@ -105,8 +107,12 @@ class DocumentsCell: UICollectionViewCell {
     
     /// Define as constraints que dependem do tamanho da tela
     private func setupDynamicConstraints() -> Void {
-        NSLayoutConstraint.activate([
-            self.tagsView.heightAnchor.constraint(equalToConstant: self.bounds.height * 0.18),
-        ])
+        NSLayoutConstraint.deactivate(self.dynamicConstraints)
+        
+        self.dynamicConstraints = [
+            self.tagsView.heightAnchor.constraint(equalToConstant: self.bounds.height * 0.18)
+        ]
+        
+        NSLayoutConstraint.activate(self.dynamicConstraints)
     }
 }
