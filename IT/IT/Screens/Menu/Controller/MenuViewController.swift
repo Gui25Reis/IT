@@ -3,12 +3,15 @@
 /* Bibliotecas necessárias: */
 import UIKit
 
-class MenuViewController: UIViewController {
+class MenuViewController: UIViewController, MenuViewControllerDelegate {
     
     /* MARK: - Atributos */
     
     /// View principal que a classe vai controlar
     private let myView = MenuView()
+    
+    
+    private var groupSelected: Int = -1
     
     
     /* Delegates & DataSource */
@@ -49,6 +52,19 @@ class MenuViewController: UIViewController {
     
 
     
+    /* MARK: - Delegate (Protocol) */
+    
+    internal func setGroupSelected(with indexPath: Int) {
+        self.groupSelected = indexPath
+    }
+    
+    
+    internal func getGroupSelected() -> Int {
+        return self.groupSelected
+    }
+    
+    
+    
     /* MARK: - Ações de botões */
     
     
@@ -62,7 +78,10 @@ class MenuViewController: UIViewController {
         self.myView.setDocumentsCollectionDataSource(with: self.documentsDataSource)
         
         // Collection de grupos
+        self.groupDelegate.setDelegate(self)
         self.myView.setGroupCollectionDelegate(with: self.groupDelegate)
+        
+        self.groupDataSource.setDelegate(self)
         self.myView.setGroupCollectionDataSource(with: self.groupDataSource)
         
         // Atualizando as tabelas

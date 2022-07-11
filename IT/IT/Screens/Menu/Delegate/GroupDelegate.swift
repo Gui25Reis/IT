@@ -7,17 +7,15 @@ class GroupDelegate: NSObject, UICollectionViewDelegate {
     
     /* MARK: - Atributos */
     
-    // private let list: [DocumentsCell] = MainCollectionDataSource.sugestionTypes
-    
-    // private weak var mainDelegate: MainControllerDelegate?
+    private weak var delegate: MenuViewControllerDelegate?
         
 
     
     /* MARK: - Encapsulamento */
     
-//    public func setProtocol(_ delegate: MainControllerDelegate) -> Void {
-//        self.mainDelegate = delegate
-//    }
+    public func setDelegate(_ delegate: MenuViewControllerDelegate) -> Void {
+        self.delegate = delegate
+    }
     
     
     
@@ -25,6 +23,17 @@ class GroupDelegate: NSObject, UICollectionViewDelegate {
     
     /// Ação de quando clica em uma célula
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        // Faz a configuração de atualiazar os dados da tabela
+        
+        guard let delegate = self.delegate else {return}
+        
+        // Define qual céula foi selecionada
+        let row = indexPath.row
+        
+        guard delegate.getGroupSelected() != row else {return}
+        
+        guard let cell = collectionView.cellForItem(at: indexPath) as? TagCell else {return}
+        
+        cell.isSelected = true
+        delegate.setGroupSelected(with: row)
     }
 }

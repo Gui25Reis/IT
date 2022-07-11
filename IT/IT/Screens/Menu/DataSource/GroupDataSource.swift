@@ -6,7 +6,11 @@ import UIKit
 class GroupDataSource: NSObject, UICollectionViewDataSource {
     
     /* MARK: - Atributos */
+    
     private var groups: [TagConfig] = []
+    
+    private var delegate: MenuViewControllerDelegate?
+    
     
     
     /* MARK: - Construtor */
@@ -25,9 +29,9 @@ class GroupDataSource: NSObject, UICollectionViewDataSource {
     
     /* MARK: - Encapsulamento */
     
-//    public func setDelegate(_ delegate: SuecaControllerDelegate) -> Void {
-//        self.delegate = delegate
-//    }
+    public func setDelegate(_ delegate: MenuViewControllerDelegate) -> Void {
+        self.delegate = delegate
+    }
     
     
     
@@ -47,10 +51,26 @@ class GroupDataSource: NSObject, UICollectionViewDataSource {
             return UICollectionViewCell()
         }
         
-        let tag = self.groups[indexPath.row]
+        let row = indexPath.row
+        
+        // Configurando célula
+        let tag = self.groups[row]
         cell.setupTag(with: tag)
         
+        // UI
         cell.layer.cornerRadius = collectionView.bounds.height * 0.52
+        
+        
+        // Definindo a célula selecionada inicial
+        if let delegate = self.delegate {
+            if row == 0 {
+                delegate.setGroupSelected(with: row)
+                cell.isSelected = true
+                
+                collectionView.selectItem(at: indexPath, animated: false, scrollPosition: .bottom)
+            }
+            cell.isSelected = (delegate.getGroupSelected() == row)
+        }
         
         return cell
     }

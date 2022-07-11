@@ -116,7 +116,8 @@ class GroupView: UIView {
             height: self.groupCollection.bounds.height
         )
         self.collectionLayout.itemSize = cellSize
-        self.reloadGroups()
+        
+        self.groupCollection.reloadInputViews()
     }
     
     
