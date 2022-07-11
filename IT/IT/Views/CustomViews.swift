@@ -63,7 +63,6 @@ class CustomViews {
     static func newCollection() -> UICollectionView {
         let layout = UICollectionViewFlowLayout()
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        cv.collectionViewLayout = UICollectionViewFlowLayout()
         cv.clipsToBounds = true
         cv.layer.masksToBounds = true
         

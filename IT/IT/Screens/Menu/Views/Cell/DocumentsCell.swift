@@ -13,15 +13,28 @@ class DocumentsCell: UICollectionViewCell {
     private let titleLabel: UILabel = {
         let lbl = CustomViews.newLabel(alignment: .center)
         lbl.numberOfLines = 3
-        // lbl.sizeToFit()
         
         return lbl
     }()
     
     
-    private let tagsView = CustomViews.newView()
+    private let tagsCollection: UICollectionView = {
+        let cv = CustomViews.newCollection()
+        cv.isScrollEnabled = false
+        cv.showsHorizontalScrollIndicator = false
+        cv.register(TagCell.self, forCellWithReuseIdentifier: TagCell.identifier)
+        return cv
+    }()
+    
     
     // Outros
+    private let collectionLayout: UICollectionViewFlowLayout = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        
+        return layout
+    }()
+    
     
     /// Constraints que vão mudar de acordo com o tamanho da tela
     private var dynamicConstraints: [NSLayoutConstraint] = []
@@ -33,6 +46,8 @@ class DocumentsCell: UICollectionViewCell {
     public override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = .secondarySystemBackground
+        
+        self.tagsCollection.collectionViewLayout = self.collectionLayout
 
         self.setupViews()
         self.setupConstraints()
@@ -50,15 +65,21 @@ class DocumentsCell: UICollectionViewCell {
     }
     
     
+    /// Define o Data Source da collection
+    public func setTagsCollectionDataSource(with dataSource: DocumentTagsDataSource) -> Void {
+        self.tagsCollection.dataSource = dataSource
+    }
+    
     
     /* MARK: - Ciclo de Vida */
     
     public override func layoutSubviews() -> Void {
         super.layoutSubviews()
         
-        self.setupUI()
+        // self.setupUI()
         self.setupStaticTexts()
         self.setupDynamicConstraints()
+        self.setupUI()
     }
     
     
@@ -68,13 +89,20 @@ class DocumentsCell: UICollectionViewCell {
     /// Adiciona os elementos (Views) na tela
     private func setupViews() -> Void {
         self.contentView.addSubview(self.titleLabel)
-        self.contentView.addSubview(self.tagsView)
+        self.contentView.addSubview(self.tagsCollection)
     }
     
     
     /// Personalização da UI
     private func setupUI() -> Void {
         self.layer.cornerRadius = self.bounds.height * 0.07
+        
+        let cellSize = CGSize(
+            width: self.bounds.width * 0.35,
+            height: self.bounds.height * 0.18
+        )
+
+        self.collectionLayout.itemSize = cellSize
     }
     
     
@@ -92,15 +120,15 @@ class DocumentsCell: UICollectionViewCell {
         let space: CGFloat = 5
         
         NSLayoutConstraint.activate([
-            self.tagsView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -space),
-            self.tagsView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor),
-            self.tagsView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor),
+            self.tagsCollection.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -space),
+            self.tagsCollection.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: space),
+            self.tagsCollection.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor),
             
             
             self.titleLabel.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: space),
             self.titleLabel.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: space),
             self.titleLabel.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -space),
-            self.titleLabel.bottomAnchor.constraint(equalTo: self.tagsView.topAnchor)
+            self.titleLabel.bottomAnchor.constraint(equalTo: self.tagsCollection.topAnchor)
         ])
     }
     
@@ -110,7 +138,7 @@ class DocumentsCell: UICollectionViewCell {
         NSLayoutConstraint.deactivate(self.dynamicConstraints)
         
         self.dynamicConstraints = [
-            self.tagsView.heightAnchor.constraint(equalToConstant: self.bounds.height * 0.18)
+            self.tagsCollection.heightAnchor.constraint(equalToConstant: self.bounds.height * 0.18)
         ]
         
         NSLayoutConstraint.activate(self.dynamicConstraints)

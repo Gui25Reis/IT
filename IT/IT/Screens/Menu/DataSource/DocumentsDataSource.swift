@@ -8,6 +8,8 @@ class DocumentsDataSource: NSObject, UICollectionViewDataSource {
     /* MARK: - Atributos */
     private var documents: [Document] = []
     
+    private var dataSources: [Int: DocumentTagsDataSource] = [:]
+    
     
     /* MARK: - Construtor */
     
@@ -16,7 +18,11 @@ class DocumentsDataSource: NSObject, UICollectionViewDataSource {
         
         let document = Document(
             group: "Teste",
-            categories: [TagConfig(text: "Teste", color: .cyan), TagConfig(text: "Teste", color: .cyan)],
+            categories: [
+                TagConfig(text: "Teste", color: .tertiaryLabel),
+                TagConfig(text: "Teste", color: .tertiaryLabel),
+                TagConfig(text: "Teste", color: .tertiaryLabel)
+            ],
             title: "Título do documento!!!!"
         )
         
@@ -54,7 +60,11 @@ class DocumentsDataSource: NSObject, UICollectionViewDataSource {
         let document = self.documents[indexPath.row]
         cell.setupCell(with: document)
         
-        // collectionView.reloadData()
+        
+        let documentTagsDataSource = DocumentTagsDataSource(tags: document.categories)
+        self.dataSources[indexPath.row] = documentTagsDataSource
+        
+        cell.setTagsCollectionDataSource(with: documentTagsDataSource)
         return cell
     }
     

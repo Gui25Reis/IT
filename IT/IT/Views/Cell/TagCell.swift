@@ -14,12 +14,14 @@ class TagCell: UICollectionViewCell {
     
     /// Define o que vai acontecer quando a célula é selecionada
     override var isSelected: Bool {
-        
         didSet {
-            self.setupIfCellSelected(to: self.isSelected)
+            if self.allowSelection {
+                self.setupIfCellSelected(to: self.isSelected)
+            }
         }
     }
-        
+    
+    public var allowSelection: Bool = true
     
     
     /* MARK: - Construtor */

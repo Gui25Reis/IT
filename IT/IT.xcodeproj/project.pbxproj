@@ -13,6 +13,7 @@
 		220F95A82878C00F00A1D30F /* GroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220F95A72878C00F00A1D30F /* GroupView.swift */; };
 		220F95AA2878C44600A1D30F /* GroupDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220F95A92878C44600A1D30F /* GroupDataSource.swift */; };
 		220F95AC2878C84000A1D30F /* GroupDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220F95AB2878C84000A1D30F /* GroupDelegate.swift */; };
+		220F95AF287BEF2600A1D30F /* DocumentTagsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220F95AE287BEF2600A1D30F /* DocumentTagsDataSource.swift */; };
 		223EB48E2876F2EF006BD32F /* DocumentsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223EB48D2876F2EF006BD32F /* DocumentsCell.swift */; };
 		223EB4902876F3D2006BD32F /* TagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223EB48F2876F3D2006BD32F /* TagView.swift */; };
 		223EB4932876F480006BD32F /* TagConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223EB4922876F480006BD32F /* TagConfig.swift */; };
@@ -41,6 +42,7 @@
 		220F95A72878C00F00A1D30F /* GroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupView.swift; sourceTree = "<group>"; };
 		220F95A92878C44600A1D30F /* GroupDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupDataSource.swift; sourceTree = "<group>"; };
 		220F95AB2878C84000A1D30F /* GroupDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupDelegate.swift; sourceTree = "<group>"; };
+		220F95AE287BEF2600A1D30F /* DocumentTagsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentTagsDataSource.swift; sourceTree = "<group>"; };
 		223EB48D2876F2EF006BD32F /* DocumentsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentsCell.swift; sourceTree = "<group>"; };
 		223EB48F2876F3D2006BD32F /* TagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagView.swift; sourceTree = "<group>"; };
 		223EB4922876F480006BD32F /* TagConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagConfig.swift; sourceTree = "<group>"; };
@@ -97,6 +99,7 @@
 			children = (
 				220D86C3287815E100F63E73 /* DocumentsDataSource.swift */,
 				220F95A92878C44600A1D30F /* GroupDataSource.swift */,
+				220F95AE287BEF2600A1D30F /* DocumentTagsDataSource.swift */,
 			);
 			path = DataSource;
 			sourceTree = "<group>";
@@ -366,6 +369,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				22B7658C28763AA700BE6ED1 /* FontConfig.swift in Sources */,
+				220F95AF287BEF2600A1D30F /* DocumentTagsDataSource.swift in Sources */,
 				22B7657D2876317100BE6ED1 /* MenuView.swift in Sources */,
 				22B7656B2876301800BE6ED1 /* IT.xcdatamodeld in Sources */,
 				22B7658E28763DA600BE6ED1 /* IconConfig.swift in Sources */,
