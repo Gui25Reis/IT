@@ -36,6 +36,9 @@ class MenuView: UIView {
     /// Constraints que vão mudar de acordo com o tamanho da tela
     private var dynamicConstraints: [NSLayoutConstraint] = []
     
+    /// Salva a última dimensão da tela
+    private var viewSize: CGRect = .zero
+    
     
     
     /* MARK: - Construtor */
@@ -140,12 +143,16 @@ class MenuView: UIView {
     public override func layoutSubviews() -> Void {
         super.layoutSubviews()
         
-        self.setupUI()
-        self.setupStaticTexts()
-        self.setupDynamicConstraints()
-        
-        self.reloadInputViews()
-        self.reloadDocuments()
+        if self.bounds != self.viewSize {
+            self.setupUI()
+            self.setupStaticTexts()
+            self.setupDynamicConstraints()
+            
+            self.reloadInputViews()
+            self.documentsCollection.reloadInputViews()
+            
+            self.viewSize = self.bounds
+        }
     }
     
     

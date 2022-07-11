@@ -39,6 +39,8 @@ class DocumentsCell: UICollectionViewCell {
     /// Constraints que vão mudar de acordo com o tamanho da tela
     private var dynamicConstraints: [NSLayoutConstraint] = []
     
+    /// Salva a última dimensão da tela
+    private var viewSize: CGRect = .zero
     
     
     /* MARK: - Construtor */
@@ -76,10 +78,16 @@ class DocumentsCell: UICollectionViewCell {
     public override func layoutSubviews() -> Void {
         super.layoutSubviews()
         
-        // self.setupUI()
-        self.setupStaticTexts()
-        self.setupDynamicConstraints()
-        self.setupUI()
+        if self.bounds != self.viewSize {
+            self.setupStaticTexts()
+            self.setupDynamicConstraints()
+            self.setupUI()
+            
+            self.reloadInputViews()
+            self.tagsCollection.reloadInputViews()
+            
+            self.viewSize = self.bounds
+        }
     }
     
     

@@ -32,6 +32,10 @@ class GroupView: UIView {
     private var dynamicConstraints: [NSLayoutConstraint] = []
     
     
+    /// Salva a última dimensão da tela
+    private var viewSize: CGRect = .zero
+    
+    
     
     /* MARK: - Construtor */
     
@@ -92,9 +96,16 @@ class GroupView: UIView {
     public override func layoutSubviews() -> Void {
         super.layoutSubviews()
         
-        self.setupUI()
-        self.setupStaticTexts()
-        self.setupDynamicConstraints()
+        if self.bounds != self.viewSize {
+            self.setupUI()
+            self.setupStaticTexts()
+            self.setupDynamicConstraints()
+            
+            self.reloadInputViews()
+            self.groupCollection.reloadInputViews()
+            
+            self.viewSize = self.bounds
+        }
     }
     
     

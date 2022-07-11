@@ -11,7 +11,7 @@ class MenuViewController: UIViewController, MenuViewControllerDelegate {
     private let myView = MenuView()
     
     
-    private var groupSelected: Int = -1
+    private var groupSelected: Int?
     
     
     /* Delegates & DataSource */
@@ -59,7 +59,7 @@ class MenuViewController: UIViewController, MenuViewControllerDelegate {
     }
     
     
-    internal func getGroupSelected() -> Int {
+    internal func getGroupSelected() -> Int? {
         return self.groupSelected
     }
     

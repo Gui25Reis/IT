@@ -9,7 +9,7 @@ class GroupDataSource: NSObject, UICollectionViewDataSource {
     
     private var groups: [TagConfig] = []
     
-    private var delegate: MenuViewControllerDelegate?
+    private weak var delegate: MenuViewControllerDelegate?
     
     
     

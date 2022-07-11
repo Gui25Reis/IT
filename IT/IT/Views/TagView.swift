@@ -9,6 +9,9 @@ class TagView: UIView {
     
     private let tagLabel = CustomViews.newLabel(alignment: .center)
     
+    /// Salva a última dimensão da tela
+    private var viewSize: CGRect = .zero
+    
     
     
     /* MARK: - Construtor */
@@ -42,9 +45,14 @@ class TagView: UIView {
     public override func layoutSubviews() -> Void {
         super.layoutSubviews()
         
-        self.setupUI()
-        self.setupStaticTexts()
-        // self.setupDynamicConstraints()
+        if self.bounds != self.viewSize {
+            self.setupUI()
+            self.setupStaticTexts()
+            
+            self.reloadInputViews()
+            
+            self.viewSize = self.bounds
+        }
     }
     
     

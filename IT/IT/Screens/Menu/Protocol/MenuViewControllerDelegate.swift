@@ -6,5 +6,5 @@ protocol MenuViewControllerDelegate: AnyObject {
     func setGroupSelected(with indexPath: Int) -> Void
     
     /// Pega o grupo selecionado
-    func getGroupSelected() -> Int
+    func getGroupSelected() -> Int?
 }
