@@ -7,4 +7,7 @@ protocol MenuViewControllerDelegate: AnyObject {
     
     /// Pega o grupo selecionado
     func getGroupSelected() -> Int?
+    
+    /// Atualiza os dados da collection de grupos
+    func reloadGroupCollection() -> Void
 }

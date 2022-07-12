@@ -36,6 +36,17 @@ class CustomViews {
     }
     
     
+    /// Cria uma nova text field
+    static func newTextField() -> UITextField {
+        let txt = UITextField()
+        txt.translatesAutoresizingMaskIntoConstraints = false
+        txt.adjustsFontSizeToFitWidth = true
+        txt.autocapitalizationType = .sentences
+        
+        return txt
+    }
+    
+    
     /// Cria uma table
     static func newTable() -> UITableView {
         let tv = UITableView(frame: .zero, style: .grouped)
@@ -43,18 +54,18 @@ class CustomViews {
         tv.clipsToBounds = true
         tv.layer.masksToBounds = true
         
-        // tv.backgroundColor = UIColor(appColor: .suecaCard)
-        
         tv.alwaysBounceVertical = false
         tv.alwaysBounceHorizontal = false
         
         // Tirando o espaço do topo
         var frame = CGRect.zero
         frame.size.height = .leastNormalMagnitude
-        
+
         let view = UIView(frame: frame)
         tv.tableHeaderView = view
         tv.tableFooterView = view
+        
+        tv.separatorStyle = .singleLine
         return tv
     }
     

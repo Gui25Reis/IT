@@ -7,10 +7,16 @@ class MenuViewController: UIViewController, MenuViewControllerDelegate {
     
     /* MARK: - Atributos */
     
+    
+    /* Views */
+    
     /// View principal que a classe vai controlar
     private let myView = MenuView()
     
     
+    /* Outros */
+    
+    /// Define qual eh o grupo que está selecionado no momento
     private var groupSelected: Int?
     
     
@@ -36,11 +42,15 @@ class MenuViewController: UIViewController, MenuViewControllerDelegate {
         super.loadView()
         
         self.view = self.myView
+        
+        self.setupTestGroupData()
     }
     
     
     public override func viewDidLoad() -> Void {
         super.viewDidLoad()
+        
+        self.setupButtonsAction()
     }
     
     
@@ -64,9 +74,22 @@ class MenuViewController: UIViewController, MenuViewControllerDelegate {
     }
     
     
+    internal func reloadGroupCollection() -> Void {
+        self.myView.reloadGroups()
+    }
+    
+    
     
     /* MARK: - Ações de botões */
     
+    @objc private func showGroupsAction() -> Void {
+        let vc = EditGroupController()
+        vc.modalPresentationStyle = .overFullScreen
+        vc.menuViewControllerDelegate = self
+        
+        self.present(vc, animated: false)
+    }
+        
     
     
     /* MARK: - Configurações */
@@ -83,9 +106,26 @@ class MenuViewController: UIViewController, MenuViewControllerDelegate {
         
         self.groupDataSource.setDelegate(self)
         self.myView.setGroupCollectionDataSource(with: self.groupDataSource)
+    
         
         // Atualizando as tabelas
-        self.myView.reloadGroups()
+        self.reloadGroupCollection()
         self.myView.reloadDocuments()
+    }
+    
+    
+    /// Define as ações dos botões
+    private func setupButtonsAction() -> Void {
+        self.myView.setNewGroupAction(target: self, action: #selector(self.showGroupsAction))
+    }
+    
+    
+    /// Dados para fazer teste enquanto nào é criado o Core Data
+    private func setupTestGroupData() -> Void {
+        let tag = TagConfig(text: "Academy", color: nil)
+        
+        for _ in 0..<5 {
+            EditGroupController.groups.append(tag)
+        }
     }
 }

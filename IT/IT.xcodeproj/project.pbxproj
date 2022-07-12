@@ -15,6 +15,12 @@
 		220F95AC2878C84000A1D30F /* GroupDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220F95AB2878C84000A1D30F /* GroupDelegate.swift */; };
 		220F95AF287BEF2600A1D30F /* DocumentTagsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220F95AE287BEF2600A1D30F /* DocumentTagsDataSource.swift */; };
 		220F95B2287C043300A1D30F /* MenuViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220F95B1287C043300A1D30F /* MenuViewControllerDelegate.swift */; };
+		220F95B9287C31E800A1D30F /* EditGroupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220F95B8287C31E800A1D30F /* EditGroupController.swift */; };
+		220F95BB287C320700A1D30F /* EditGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220F95BA287C320700A1D30F /* EditGroupView.swift */; };
+		220F95C0287CB95600A1D30F /* EditGroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220F95BF287CB95600A1D30F /* EditGroupCell.swift */; };
+		220F95C2287CBCA500A1D30F /* UITextField+FontConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220F95C1287CBCA500A1D30F /* UITextField+FontConfig.swift */; };
+		220F95C4287CBEC400A1D30F /* EditGroupDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220F95C3287CBEC400A1D30F /* EditGroupDataSource.swift */; };
+		220F95C6287D1CEC00A1D30F /* EditGroupDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220F95C5287D1CEC00A1D30F /* EditGroupDelegate.swift */; };
 		223EB48E2876F2EF006BD32F /* DocumentsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223EB48D2876F2EF006BD32F /* DocumentsCell.swift */; };
 		223EB4902876F3D2006BD32F /* TagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223EB48F2876F3D2006BD32F /* TagView.swift */; };
 		223EB4932876F480006BD32F /* TagConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223EB4922876F480006BD32F /* TagConfig.swift */; };
@@ -44,6 +50,12 @@
 		220F95AB2878C84000A1D30F /* GroupDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupDelegate.swift; sourceTree = "<group>"; };
 		220F95AE287BEF2600A1D30F /* DocumentTagsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentTagsDataSource.swift; sourceTree = "<group>"; };
 		220F95B1287C043300A1D30F /* MenuViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewControllerDelegate.swift; sourceTree = "<group>"; };
+		220F95B8287C31E800A1D30F /* EditGroupController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditGroupController.swift; sourceTree = "<group>"; };
+		220F95BA287C320700A1D30F /* EditGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditGroupView.swift; sourceTree = "<group>"; };
+		220F95BF287CB95600A1D30F /* EditGroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditGroupCell.swift; sourceTree = "<group>"; };
+		220F95C1287CBCA500A1D30F /* UITextField+FontConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+FontConfig.swift"; sourceTree = "<group>"; };
+		220F95C3287CBEC400A1D30F /* EditGroupDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditGroupDataSource.swift; sourceTree = "<group>"; };
+		220F95C5287D1CEC00A1D30F /* EditGroupDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditGroupDelegate.swift; sourceTree = "<group>"; };
 		223EB48D2876F2EF006BD32F /* DocumentsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentsCell.swift; sourceTree = "<group>"; };
 		223EB48F2876F3D2006BD32F /* TagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagView.swift; sourceTree = "<group>"; };
 		223EB4922876F480006BD32F /* TagConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagConfig.swift; sourceTree = "<group>"; };
@@ -104,17 +116,62 @@
 			path = DataSource;
 			sourceTree = "<group>";
 		};
-		220F95AD287941C800A1D30F /* Document */ = {
+		220F95AD287941C800A1D30F /* NewGroup */ = {
 			isa = PBXGroup;
 			children = (
+				220F95BE287CB8E200A1D30F /* Protocol */,
+				220F95B5287C318700A1D30F /* DataSource */,
+				220F95B3287C317B00A1D30F /* View */,
+				220F95B4287C317F00A1D30F /* Controller */,
 			);
-			path = Document;
+			path = NewGroup;
 			sourceTree = "<group>";
 		};
 		220F95B0287C041B00A1D30F /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
 				220F95B1287C043300A1D30F /* MenuViewControllerDelegate.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		220F95B3287C317B00A1D30F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				220F95B7287C319600A1D30F /* Cell */,
+				220F95BA287C320700A1D30F /* EditGroupView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		220F95B4287C317F00A1D30F /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				220F95B8287C31E800A1D30F /* EditGroupController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		220F95B5287C318700A1D30F /* DataSource */ = {
+			isa = PBXGroup;
+			children = (
+				220F95C3287CBEC400A1D30F /* EditGroupDataSource.swift */,
+			);
+			path = DataSource;
+			sourceTree = "<group>";
+		};
+		220F95B7287C319600A1D30F /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				220F95BF287CB95600A1D30F /* EditGroupCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		220F95BE287CB8E200A1D30F /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				220F95C5287D1CEC00A1D30F /* EditGroupDelegate.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -198,7 +255,7 @@
 			children = (
 				22B7656E2876301A00BE6ED1 /* LaunchScreen.storyboard */,
 				22B7657A2876306600BE6ED1 /* Menu */,
-				220F95AD287941C800A1D30F /* Document */,
+				220F95AD287941C800A1D30F /* NewGroup */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -283,6 +340,7 @@
 				22B7658828763A5C00BE6ED1 /* UIButton+IconConfig.swift */,
 				22B7658F28763E3800BE6ED1 /* UIButton+FontConfig.swift */,
 				22B7659128766DBF00BE6ED1 /* UILabel+FontConfig.swift */,
+				220F95C1287CBCA500A1D30F /* UITextField+FontConfig.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -375,10 +433,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				220F95C4287CBEC400A1D30F /* EditGroupDataSource.swift in Sources */,
 				22B7658C28763AA700BE6ED1 /* FontConfig.swift in Sources */,
 				220F95AF287BEF2600A1D30F /* DocumentTagsDataSource.swift in Sources */,
 				22B7657D2876317100BE6ED1 /* MenuView.swift in Sources */,
 				22B7656B2876301800BE6ED1 /* IT.xcdatamodeld in Sources */,
+				220F95C6287D1CEC00A1D30F /* EditGroupDelegate.swift in Sources */,
 				22B7658E28763DA600BE6ED1 /* IconConfig.swift in Sources */,
 				223EB4972876F7C9006BD32F /* TagCell.swift in Sources */,
 				220F95AA2878C44600A1D30F /* GroupDataSource.swift in Sources */,
@@ -389,16 +449,20 @@
 				22B7658928763A5C00BE6ED1 /* UIButton+IconConfig.swift in Sources */,
 				223EB4932876F480006BD32F /* TagConfig.swift in Sources */,
 				223EB4902876F3D2006BD32F /* TagView.swift in Sources */,
+				220F95BB287C320700A1D30F /* EditGroupView.swift in Sources */,
 				220F95AC2878C84000A1D30F /* GroupDelegate.swift in Sources */,
 				220D86C4287815E100F63E73 /* DocumentsDataSource.swift in Sources */,
 				22B7659428766E4B00BE6ED1 /* CustomViews.swift in Sources */,
 				22B7659028763E3800BE6ED1 /* UIButton+FontConfig.swift in Sources */,
+				220F95C0287CB95600A1D30F /* EditGroupCell.swift in Sources */,
 				223EB48E2876F2EF006BD32F /* DocumentsCell.swift in Sources */,
 				22B765632876301800BE6ED1 /* SceneDelegate.swift in Sources */,
 				220F95B2287C043300A1D30F /* MenuViewControllerDelegate.swift in Sources */,
 				220D86BB287778D800F63E73 /* Document.swift in Sources */,
 				220F95A82878C00F00A1D30F /* GroupView.swift in Sources */,
 				220D86C12878159900F63E73 /* DocumentsDelegate.swift in Sources */,
+				220F95B9287C31E800A1D30F /* EditGroupController.swift in Sources */,
+				220F95C2287CBCA500A1D30F /* UITextField+FontConfig.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

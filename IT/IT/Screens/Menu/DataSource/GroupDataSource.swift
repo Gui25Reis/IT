@@ -7,23 +7,15 @@ class GroupDataSource: NSObject, UICollectionViewDataSource {
     
     /* MARK: - Atributos */
     
-    private var groups: [TagConfig] = []
-    
     private weak var delegate: MenuViewControllerDelegate?
     
     
     
     /* MARK: - Construtor */
     
-    override init() {
-        super.init()
-        
-        let tag = TagConfig(text: "Academy", color: nil)
-        
-        for _ in 0..<5 {
-            self.groups.append(tag)
-        }
-    }
+//    override init() {
+//        super.init()
+//    }
 
     
     
@@ -39,7 +31,7 @@ class GroupDataSource: NSObject, UICollectionViewDataSource {
     
     /// Mostra quantas células vão ser mostradas
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.groups.count
+        return EditGroupController.groups.count
     }
     
     
@@ -54,7 +46,7 @@ class GroupDataSource: NSObject, UICollectionViewDataSource {
         let row = indexPath.row
         
         // Configurando célula
-        let tag = self.groups[row]
+        let tag = EditGroupController.groups[row]
         cell.setupTag(with: tag)
         
         // UI

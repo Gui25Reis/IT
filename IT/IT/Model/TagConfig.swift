@@ -6,6 +6,6 @@ import class UIKit.UIColor
 
 /// Configurações para a tag
 struct TagConfig {
-    let text: String
+    var text: String
     let color: UIColor?
 }

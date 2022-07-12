@@ -23,7 +23,7 @@ class GroupView: UIView {
     
     private let collectionLayout: UICollectionViewFlowLayout = {
         let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .vertical
+        layout.scrollDirection = .horizontal
         
         return layout
     }()
