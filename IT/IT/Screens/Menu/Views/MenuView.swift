@@ -143,16 +143,16 @@ class MenuView: UIView {
     public override func layoutSubviews() -> Void {
         super.layoutSubviews()
         
-        if self.bounds != self.viewSize {
+        //if self.bounds != self.viewSize {
             self.setupUI()
             self.setupStaticTexts()
             self.setupDynamicConstraints()
             
             self.reloadInputViews()
-            self.documentsCollection.reloadInputViews()
+            //self.documentsCollection.reloadInputViews()
             
             self.viewSize = self.bounds
-        }
+        //}
     }
     
     

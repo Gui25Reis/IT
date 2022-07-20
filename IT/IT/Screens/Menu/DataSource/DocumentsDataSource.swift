@@ -65,6 +65,8 @@ class DocumentsDataSource: NSObject, UICollectionViewDataSource {
         self.dataSources[indexPath.row] = documentTagsDataSource
         
         cell.setTagsCollectionDataSource(with: documentTagsDataSource)
+        
+        collectionView.reloadData()
         return cell
     }
     
