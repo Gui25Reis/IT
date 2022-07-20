@@ -2,8 +2,9 @@
 
 /* Bibliotecas necessárias: */
 import UIKit
+import WebKit
 
-class CustomViews {
+struct CustomViews {
     
     /* MARK: - Métodos */
     
@@ -82,5 +83,13 @@ class CustomViews {
         
         cv.translatesAutoresizingMaskIntoConstraints = false
         return cv
+    }
+    
+    
+    /// Cria uma web view
+    static func newWebView() -> WKWebView {
+        let web = WKWebView()
+        web.translatesAutoresizingMaskIntoConstraints = false
+        return web
     }
 }

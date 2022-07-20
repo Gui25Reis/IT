@@ -1,12 +1,3 @@
-//
-//  GroupsCell.swift
-//  IT
-//
-//  Created by Gui Reis on 11/07/22.
-//
-
-import Foundation
-
 /* Gui Reis     -    gui.sreis25@gmail.com */
 
 /* Bibliotecas necessárias: */

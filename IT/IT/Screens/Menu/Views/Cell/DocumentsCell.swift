@@ -106,11 +106,11 @@ class DocumentsCell: UICollectionViewCell {
         self.layer.cornerRadius = self.bounds.height * 0.07
         
         /* Obs:
-         A altura da céulua precisa ser menor que a altura da
+         A altura da célula precisa ser menor que a altura da
          collection.
          Estava sendo atribuido a altura direto da
          collection mas estava dando erro.
-         Então foi atribuido o mesmo valor, mas está tirando 0.1
+         Então foi atribuido o mesmo valor, mas está tirando 1
          pra ser emnor que a altura, assim tira os warnings.
          */
         let cellSize = CGSize(

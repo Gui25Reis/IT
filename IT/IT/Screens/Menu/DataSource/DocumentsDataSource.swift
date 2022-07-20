@@ -23,7 +23,8 @@ class DocumentsDataSource: NSObject, UICollectionViewDataSource {
                 TagConfig(text: "Teste", color: .tertiaryLabel),
                 TagConfig(text: "Teste", color: .tertiaryLabel)
             ],
-            title: "Título do documento!!!!"
+            title: "Título do documento!!!!",
+            links: []
         )
         
         for _ in 0..<70 {

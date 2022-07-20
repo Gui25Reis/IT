@@ -137,11 +137,11 @@ class GroupView: UIView {
         let btSize: CGFloat = self.bounds.height
         
         self.favoriteButton.setupIcon(with: IconConfig(
-            icon: .favorite, size: btSize, weight: .regular, scale: .medium)
+            icon: .favoriteSquare, size: btSize, weight: .regular, scale: .medium)
         )
         
         self.newGroupButton.setupIcon(with: IconConfig(
-            icon: .addQuare, size: btSize, weight: .regular, scale: .medium)
+            icon: .addSquare, size: btSize, weight: .regular, scale: .medium)
         )
     }
     

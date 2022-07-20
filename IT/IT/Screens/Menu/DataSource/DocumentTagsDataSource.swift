@@ -32,23 +32,21 @@ class DocumentTagsDataSource: NSObject, UICollectionViewDataSource {
     
     /// Configura uma célula
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if indexPath.row <= 3  {
-            // Cria uma variácel para mexer com uma célula que foi criada
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TagCell.identifier, for: indexPath) as? TagCell else {
-                return UICollectionViewCell()
-            }
-            // Configura a célula
-            let tag = self.tags[indexPath.row]
-            cell.setupTag(with: tag)
-            
-            // Desativa a seleção
-            cell.allowSelection = false
-            
-            // Borda arredondada
-            cell.layer.cornerRadius = collectionView.bounds.height * 0.15
-            return cell
+        // Cria uma variácel para mexer com uma célula que foi criada
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TagCell.identifier, for: indexPath) as? TagCell else {
+            return UICollectionViewCell()
         }
-        return UICollectionViewCell()
+        // Configura a célula
+        let tag = self.tags[indexPath.row]
+        cell.setupTag(with: tag)
+        
+        // Desativa a seleção
+        cell.allowSelection = false
+        
+        // Borda arredondada
+        cell.layer.cornerRadius = collectionView.bounds.height * 0.15
+        return cell
+        
     }
     
     

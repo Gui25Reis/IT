@@ -82,10 +82,20 @@ class MenuViewController: UIViewController, MenuViewControllerDelegate {
     
     /* MARK: - Ações de botões */
     
+    /// Apresnera a tela de manter um grupo
     @objc private func showGroupsAction() -> Void {
         let vc = EditGroupController()
         vc.modalPresentationStyle = .overFullScreen
         vc.menuViewControllerDelegate = self
+        
+        self.present(vc, animated: false)
+    }
+    
+    
+    /// Apresenta a tela do documento
+    @objc private func showDocumentAction() -> Void {
+        let vc = DocumentViewController(with: self.getDocumentTest())
+        vc.modalPresentationStyle = .fullScreen
         
         self.present(vc, animated: false)
     }
@@ -117,6 +127,8 @@ class MenuViewController: UIViewController, MenuViewControllerDelegate {
     /// Define as ações dos botões
     private func setupButtonsAction() -> Void {
         self.myView.setNewGroupAction(target: self, action: #selector(self.showGroupsAction))
+        
+        self.myView.setNewDocumentAction(target: self, action: #selector(self.showDocumentAction))
     }
     
     
@@ -127,5 +139,38 @@ class MenuViewController: UIViewController, MenuViewControllerDelegate {
         for _ in 0..<5 {
             EditGroupController.groups.append(tag)
         }
+    }
+    
+    
+    
+    private func getDocumentTest() -> Document {
+        return Document(
+            group: "Academy",
+            categories: [
+                TagConfig(text: "Categoria", color: .red),
+                TagConfig(text: "Categoria", color: .blue),
+                TagConfig(text: "Categoria", color: .brown),
+                TagConfig(text: "Categoria", color: .yellow),
+                TagConfig(text: "Categoria", color: .orange)
+            ],
+            title: "Como fazer um padrão de arquivo?",
+            links: [
+                LinkInfo(
+                    name: "Padrão de comentário",
+                    categorie: TagConfig(text: "Notion", color: .orange),
+                    link: "https://kings-gui.notion.site/Padroniza-o-do-c-digo-cf5fd2bdeee448da892c462bd02fc572"
+                ),
+                LinkInfo(
+                    name: "Padrão de comentário",
+                    categorie: TagConfig(text: "Notion", color: .orange),
+                    link: "https://kings-gui.notion.site/Padroniza-o-do-c-digo-cf5fd2bdeee448da892c462bd02fc572"
+                ),
+                LinkInfo(
+                    name: "Padrão de comentário",
+                    categorie: TagConfig(text: "Notion", color: .orange),
+                    link: "https://kings-gui.notion.site/Padroniza-o-do-c-digo-cf5fd2bdeee448da892c462bd02fc572"
+                )
+            ]
+        )
     }
 }

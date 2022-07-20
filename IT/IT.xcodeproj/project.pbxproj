@@ -21,6 +21,12 @@
 		220F95C2287CBCA500A1D30F /* UITextField+FontConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220F95C1287CBCA500A1D30F /* UITextField+FontConfig.swift */; };
 		220F95C4287CBEC400A1D30F /* EditGroupDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220F95C3287CBEC400A1D30F /* EditGroupDataSource.swift */; };
 		220F95C6287D1CEC00A1D30F /* EditGroupDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220F95C5287D1CEC00A1D30F /* EditGroupDelegate.swift */; };
+		2225C4A12887B5FA0028C376 /* DocumentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2225C4A02887B5FA0028C376 /* DocumentViewController.swift */; };
+		2225C4A32887B62A0028C376 /* DocumentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2225C4A22887B62A0028C376 /* DocumentView.swift */; };
+		2225C4A52887D01F0028C376 /* LinkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2225C4A42887D01F0028C376 /* LinkCell.swift */; };
+		2225C4A72887E60F0028C376 /* LinkInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2225C4A62887E60F0028C376 /* LinkInfo.swift */; };
+		2225C4A92887E9FC0028C376 /* LinksDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2225C4A82887E9FC0028C376 /* LinksDataSource.swift */; };
+		2225C4AB2887F3970028C376 /* LinksDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2225C4AA2887F3970028C376 /* LinksDelegate.swift */; };
 		223EB48E2876F2EF006BD32F /* DocumentsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223EB48D2876F2EF006BD32F /* DocumentsCell.swift */; };
 		223EB4902876F3D2006BD32F /* TagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223EB48F2876F3D2006BD32F /* TagView.swift */; };
 		223EB4932876F480006BD32F /* TagConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223EB4922876F480006BD32F /* TagConfig.swift */; };
@@ -56,6 +62,12 @@
 		220F95C1287CBCA500A1D30F /* UITextField+FontConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+FontConfig.swift"; sourceTree = "<group>"; };
 		220F95C3287CBEC400A1D30F /* EditGroupDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditGroupDataSource.swift; sourceTree = "<group>"; };
 		220F95C5287D1CEC00A1D30F /* EditGroupDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditGroupDelegate.swift; sourceTree = "<group>"; };
+		2225C4A02887B5FA0028C376 /* DocumentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentViewController.swift; sourceTree = "<group>"; };
+		2225C4A22887B62A0028C376 /* DocumentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentView.swift; sourceTree = "<group>"; };
+		2225C4A42887D01F0028C376 /* LinkCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkCell.swift; sourceTree = "<group>"; };
+		2225C4A62887E60F0028C376 /* LinkInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkInfo.swift; sourceTree = "<group>"; };
+		2225C4A82887E9FC0028C376 /* LinksDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinksDataSource.swift; sourceTree = "<group>"; };
+		2225C4AA2887F3970028C376 /* LinksDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinksDelegate.swift; sourceTree = "<group>"; };
 		223EB48D2876F2EF006BD32F /* DocumentsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentsCell.swift; sourceTree = "<group>"; };
 		223EB48F2876F3D2006BD32F /* TagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagView.swift; sourceTree = "<group>"; };
 		223EB4922876F480006BD32F /* TagConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagConfig.swift; sourceTree = "<group>"; };
@@ -176,11 +188,72 @@
 			path = Protocol;
 			sourceTree = "<group>";
 		};
+		2225C4982887B5A00028C376 /* Docuemnt */ = {
+			isa = PBXGroup;
+			children = (
+				2225C49D2887B5E00028C376 /* Protocol */,
+				2225C49C2887B5DA0028C376 /* DataSource */,
+				2225C49B2887B5D30028C376 /* Delegate */,
+				2225C49A2887B5D00028C376 /* View */,
+				2225C4992887B5CB0028C376 /* Controller */,
+			);
+			path = Docuemnt;
+			sourceTree = "<group>";
+		};
+		2225C4992887B5CB0028C376 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				2225C4A02887B5FA0028C376 /* DocumentViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		2225C49A2887B5D00028C376 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2225C49E2887B5E60028C376 /* Cell */,
+				2225C4A22887B62A0028C376 /* DocumentView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2225C49B2887B5D30028C376 /* Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				2225C4AA2887F3970028C376 /* LinksDelegate.swift */,
+			);
+			path = Delegate;
+			sourceTree = "<group>";
+		};
+		2225C49C2887B5DA0028C376 /* DataSource */ = {
+			isa = PBXGroup;
+			children = (
+				2225C4A82887E9FC0028C376 /* LinksDataSource.swift */,
+			);
+			path = DataSource;
+			sourceTree = "<group>";
+		};
+		2225C49D2887B5E00028C376 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		2225C49E2887B5E60028C376 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				2225C4A42887D01F0028C376 /* LinkCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		223EB4912876F469006BD32F /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				223EB4922876F480006BD32F /* TagConfig.swift */,
 				220D86BA287778D800F63E73 /* Document.swift */,
+				2225C4A62887E60F0028C376 /* LinkInfo.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -256,6 +329,7 @@
 				22B7656E2876301A00BE6ED1 /* LaunchScreen.storyboard */,
 				22B7657A2876306600BE6ED1 /* Menu */,
 				220F95AD287941C800A1D30F /* NewGroup */,
+				2225C4982887B5A00028C376 /* Docuemnt */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -437,8 +511,12 @@
 				22B7658C28763AA700BE6ED1 /* FontConfig.swift in Sources */,
 				220F95AF287BEF2600A1D30F /* DocumentTagsDataSource.swift in Sources */,
 				22B7657D2876317100BE6ED1 /* MenuView.swift in Sources */,
+				2225C4A12887B5FA0028C376 /* DocumentViewController.swift in Sources */,
+				2225C4A72887E60F0028C376 /* LinkInfo.swift in Sources */,
+				2225C4A92887E9FC0028C376 /* LinksDataSource.swift in Sources */,
 				22B7656B2876301800BE6ED1 /* IT.xcdatamodeld in Sources */,
 				220F95C6287D1CEC00A1D30F /* EditGroupDelegate.swift in Sources */,
+				2225C4A32887B62A0028C376 /* DocumentView.swift in Sources */,
 				22B7658E28763DA600BE6ED1 /* IconConfig.swift in Sources */,
 				223EB4972876F7C9006BD32F /* TagCell.swift in Sources */,
 				220F95AA2878C44600A1D30F /* GroupDataSource.swift in Sources */,
@@ -451,6 +529,7 @@
 				223EB4902876F3D2006BD32F /* TagView.swift in Sources */,
 				220F95BB287C320700A1D30F /* EditGroupView.swift in Sources */,
 				220F95AC2878C84000A1D30F /* GroupDelegate.swift in Sources */,
+				2225C4AB2887F3970028C376 /* LinksDelegate.swift in Sources */,
 				220D86C4287815E100F63E73 /* DocumentsDataSource.swift in Sources */,
 				22B7659428766E4B00BE6ED1 /* CustomViews.swift in Sources */,
 				22B7659028763E3800BE6ED1 /* UIButton+FontConfig.swift in Sources */,
@@ -460,6 +539,7 @@
 				220F95B2287C043300A1D30F /* MenuViewControllerDelegate.swift in Sources */,
 				220D86BB287778D800F63E73 /* Document.swift in Sources */,
 				220F95A82878C00F00A1D30F /* GroupView.swift in Sources */,
+				2225C4A52887D01F0028C376 /* LinkCell.swift in Sources */,
 				220D86C12878159900F63E73 /* DocumentsDelegate.swift in Sources */,
 				220F95B9287C31E800A1D30F /* EditGroupController.swift in Sources */,
 				220F95C2287CBCA500A1D30F /* UITextField+FontConfig.swift in Sources */,

@@ -9,7 +9,7 @@ enum AppButton: CustomStringConvertible {
     /// Símbolo - 􀈑
     case trash
     
-    /// Símbolo - 􀊫
+    /// Símbolo - 􀈂
     case share
     
     /// Símbolo - 􀅼
@@ -21,17 +21,26 @@ enum AppButton: CustomStringConvertible {
     /// Símbolo - 􀍠
     case menu
     
-    /// Símbolo - 􀋭
+    /// Símbolo - 􀋮
     case visible
     
-    /// Símbolo - 􀋯
+    /// Símbolo - 􀋭
     case notVisible
     
     /// Símbolo - 􀠧
-    case favorite
+    case favoriteSquare
     
     /// Símbolo - 􀃜
-    case addQuare
+    case addSquare
+    
+    /// Símbolo - 􀰌
+    case back
+    
+    /// Símbolo - 􀋂
+    case favoriteFalse
+    
+    /// Símbolo - 􀋃
+    case favoriteTrue
     
     
     var description: String {
@@ -42,10 +51,13 @@ enum AppButton: CustomStringConvertible {
         case .add: return "plus"
         case .reload: return "arrow.counterclockwise"
         case .menu: return "ellipsis"
-        case .visible: return "eye"
-        case .notVisible: return "eye.slash"
-        case .favorite: return "star.square"
-        case .addQuare: return "plus.square"
+        case .visible: return "eye.fill"
+        case .notVisible: return "eye"
+        case .favoriteSquare: return "star.square"
+        case .addSquare: return "plus.square"
+        case .back: return "arrow.backward"
+        case .favoriteFalse: return "star"
+        case .favoriteTrue: return "star.fill"
         }
     }
 }

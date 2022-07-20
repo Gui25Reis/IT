@@ -3,7 +3,8 @@
 
 /// Modelo de informações de um documento
 struct Document {
-    let group: String
-    let categories: [TagConfig]
-    let title: String
+    var group: String
+    var categories: [TagConfig]
+    var title: String
+    var links: [LinkInfo]
 }
