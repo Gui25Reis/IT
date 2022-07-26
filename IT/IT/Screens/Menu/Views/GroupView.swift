@@ -124,7 +124,7 @@ class GroupView: UIView {
     private func setupUI() -> Void {
         let cellSize = CGSize(
             width: self.groupCollection.bounds.width * 0.09,
-            height: self.groupCollection.bounds.height
+            height: self.groupCollection.bounds.height-1
         )
         self.collectionLayout.itemSize = cellSize
         

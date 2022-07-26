@@ -25,8 +25,6 @@ class DocumentView: UIView {
     
     private let tagCollection: UICollectionView = {
         let cv = CustomViews.newCollection()
-        // cv.backgroundColor = .red
-        
         cv.register(TagCell.self, forCellWithReuseIdentifier: TagCell.identifier)
         return cv
     }()
@@ -80,6 +78,12 @@ class DocumentView: UIView {
     
     
     /* MARK: - Encapsulamento */
+    
+    /// Faz a configuração de quando é um novo documento
+    public func setupNewDocument() -> Void {
+        self.titleField.placeholder = "Escreva título"
+    }
+    
     
     /// Define a URL que vai aparecer
     public func setUrl(with urlQuery: String) -> Bool {

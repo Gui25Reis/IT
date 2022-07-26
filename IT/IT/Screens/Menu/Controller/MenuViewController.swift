@@ -79,6 +79,16 @@ class MenuViewController: UIViewController, MenuViewControllerDelegate {
     }
     
     
+    internal func openDocumentPage(at documentIndex: Int) -> Void {
+        let document = self.documentsDataSource.documents[documentIndex]
+        
+        let vc = DocumentViewController(with: document)
+        vc.modalPresentationStyle = .fullScreen
+        
+        self.present(vc, animated: false)
+    }
+    
+    
     
     /* MARK: - Ações de botões */
     
@@ -94,7 +104,7 @@ class MenuViewController: UIViewController, MenuViewControllerDelegate {
     
     /// Apresenta a tela do documento
     @objc private func showDocumentAction() -> Void {
-        let vc = DocumentViewController(with: self.getDocumentTest())
+        let vc = DocumentViewController(with: nil)
         vc.modalPresentationStyle = .fullScreen
         
         self.present(vc, animated: false)
@@ -107,7 +117,9 @@ class MenuViewController: UIViewController, MenuViewControllerDelegate {
     /// Configura os delegates e Data Sources das views
     private func setupDelegates() -> Void {
         // Collection de documentos
+        self.documentsDelegate.setDelegate(self)
         self.myView.setDocumentsCollectionDelegate(with: self.documentsDelegate)
+        
         self.myView.setDocumentsCollectionDataSource(with: self.documentsDataSource)
         
         // Collection de grupos

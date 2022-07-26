@@ -65,7 +65,7 @@ class DocumentViewController: UIViewController {
     
     /// Ação do botào de fechar a página
     @objc private func closeAction() -> Void {
-        self.dismiss(animated: true)
+        self.dismiss(animated: false)
     }
     
     
@@ -110,6 +110,8 @@ class DocumentViewController: UIViewController {
             if !document.links.isEmpty {
                 let _ = self.myView.setUrl(with: document.links[0].link)
             }
+        } else {
+            self.myView.setupNewDocument()
         }
     }
 }

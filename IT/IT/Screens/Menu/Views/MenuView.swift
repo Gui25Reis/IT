@@ -26,6 +26,7 @@ class MenuView: UIView {
     
     
     // Outros
+    
     private let collectionLayout: UICollectionViewFlowLayout = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -50,8 +51,6 @@ class MenuView: UIView {
         
         self.setupViews()
         self.setupConstraints()
-        
-        // self.documentsCollection.backgroundColor = .tertiaryLabel
     }
     
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
@@ -143,7 +142,7 @@ class MenuView: UIView {
     public override func layoutSubviews() -> Void {
         super.layoutSubviews()
         
-        //if self.bounds != self.viewSize {
+        // if self.bounds != self.viewSize {
             self.setupUI()
             self.setupStaticTexts()
             self.setupDynamicConstraints()
@@ -152,7 +151,7 @@ class MenuView: UIView {
             //self.documentsCollection.reloadInputViews()
             
             self.viewSize = self.bounds
-        //}
+        // }
     }
     
     
@@ -178,11 +177,11 @@ class MenuView: UIView {
     private func setupUI() -> Void {
         self.documentsCollection.layer.cornerRadius = self.bounds.height * 0.016
         
+        // Layout
         let cellInLine: CGFloat = 7
         let spaceBetweenCell = self.documentsCollection.bounds.width * 0.005
         let sizeWithoutSpace = self.documentsCollection.bounds.width - (spaceBetweenCell*cellInLine)
         
-        // Layout
         let cellSize = CGSize(
             width: sizeWithoutSpace/cellInLine,
             height: self.documentsCollection.bounds.height * 0.16

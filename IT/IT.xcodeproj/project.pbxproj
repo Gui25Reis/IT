@@ -45,6 +45,7 @@
 		22B7659028763E3800BE6ED1 /* UIButton+FontConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B7658F28763E3800BE6ED1 /* UIButton+FontConfig.swift */; };
 		22B7659228766DBF00BE6ED1 /* UILabel+FontConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B7659128766DBF00BE6ED1 /* UILabel+FontConfig.swift */; };
 		22B7659428766E4B00BE6ED1 /* CustomViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B7659328766E4B00BE6ED1 /* CustomViews.swift */; };
+		22EE12B8288FC27B007FCAF7 /* Log in Resources */ = {isa = PBXBuildFile; fileRef = 22EE12B7288FC27B007FCAF7 /* Log */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -89,6 +90,7 @@
 		22B7658F28763E3800BE6ED1 /* UIButton+FontConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+FontConfig.swift"; sourceTree = "<group>"; };
 		22B7659128766DBF00BE6ED1 /* UILabel+FontConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+FontConfig.swift"; sourceTree = "<group>"; };
 		22B7659328766E4B00BE6ED1 /* CustomViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViews.swift; sourceTree = "<group>"; };
+		22EE12B7288FC27B007FCAF7 /* Log */ = {isa = PBXFileReference; lastKnownFileType = text; path = Log; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -277,6 +279,7 @@
 		22B765542876301800BE6ED1 = {
 			isa = PBXGroup;
 			children = (
+				22EE12B7288FC27B007FCAF7 /* Log */,
 				22B7657F2876331C00BE6ED1 /* Shared */,
 				22B7655F2876301800BE6ED1 /* IT */,
 				22B7655E2876301800BE6ED1 /* Products */,
@@ -495,6 +498,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22EE12B8288FC27B007FCAF7 /* Log in Resources */,
 				22B765702876301A00BE6ED1 /* LaunchScreen.storyboard in Resources */,
 				22B7656D2876301A00BE6ED1 /* Assets.xcassets in Resources */,
 			);

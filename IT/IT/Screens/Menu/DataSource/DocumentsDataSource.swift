@@ -6,7 +6,7 @@ import UIKit
 class DocumentsDataSource: NSObject, UICollectionViewDataSource {
     
     /* MARK: - Atributos */
-    private var documents: [Document] = []
+    public var documents: [Document] = []
     
     private var dataSources: [Int: DocumentTagsDataSource] = [:]
     
@@ -16,18 +16,19 @@ class DocumentsDataSource: NSObject, UICollectionViewDataSource {
     override init() {
         super.init()
         
-        let document = Document(
+        var document = Document(
             group: "Teste",
             categories: [
                 TagConfig(text: "Teste", color: .tertiaryLabel),
                 TagConfig(text: "Teste", color: .tertiaryLabel),
                 TagConfig(text: "Teste", color: .tertiaryLabel)
             ],
-            title: "Título do documento!!!!",
+            title: "Título do documento nº !!!!",
             links: []
         )
         
-        for _ in 0..<70 {
+        for num in 0..<70 {
+            document.title = "Título do documento nº\(num+1) !!!!"
             self.documents.append(document)
         }
     }
@@ -67,7 +68,6 @@ class DocumentsDataSource: NSObject, UICollectionViewDataSource {
         
         cell.setTagsCollectionDataSource(with: documentTagsDataSource)
         
-        collectionView.reloadData()
         return cell
     }
     
