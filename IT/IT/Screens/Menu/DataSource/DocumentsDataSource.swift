@@ -24,7 +24,16 @@ class DocumentsDataSource: NSObject, UICollectionViewDataSource {
                 TagConfig(text: "Teste", color: .tertiaryLabel)
             ],
             title: "Título do documento nº !!!!",
-            links: []
+            links: [
+                LinkInfo(
+                    name: "Esconder scroll", categorie: TagConfig(text: "", color: nil),
+                    link: "https://kings-gui.notion.site/Como-esconder-a-barra-de-rolagem-scroll-bar-da-Collection-ecfe3bc7538a482c8a052f2d0e35c6e6"
+                ),
+                LinkInfo(
+                    name: "Padrão de comentários", categorie: TagConfig(text: "", color: nil),
+                    link: "https://kings-gui.notion.site/Padroniza-o-do-c-digo-cf5fd2bdeee448da892c462bd02fc572"
+                )
+            ]
         )
         
         for num in 0..<70 {

@@ -17,7 +17,7 @@ struct CustomViews {
     }
     
 
-    /// Label
+    /// Label (por padrão o alinhamento é .left)
     static func newLabel(alignment: NSTextAlignment = .left) -> UILabel {
         let lbl = UILabel(frame: .zero)
         lbl.textAlignment = alignment

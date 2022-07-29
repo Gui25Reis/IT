@@ -11,6 +11,13 @@ class LinksDataSource: NSObject, UITableViewDataSource {
     private var links: [LinkInfo] = []
     
     
+    private var tableWasSet: Bool = false
+    
+    
+    /// Lista de tags que vão ser mostradas no documento
+    private var delegate: DocumentControllerDelegate?
+    
+    
     
     /* MARK: - Construtor */
     
@@ -18,6 +25,14 @@ class LinksDataSource: NSObject, UITableViewDataSource {
         super.init()
         
         self.links = links
+    }
+    
+    
+    /* MARK: - Delegate */
+    
+    /// Define o delegate da classe
+    public func setDelegate(with delegate: DocumentControllerDelegate) -> Void {
+        self.delegate = delegate
     }
     
     
@@ -36,12 +51,33 @@ class LinksDataSource: NSObject, UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: LinkCell.identifier, for: indexPath) as? LinkCell else {
             return UITableViewCell()
         }
+        
         // Configura a célula
         let link = self.links[indexPath.row]
+        cell.setupCell(with: link, tag: indexPath.row)
         
-        cell.setupCell(with: link)
+        // Ações de botões
+        cell.setOptionsAction(target: self, action: #selector(self.editAction(sender:)))
+        cell.setLinkAction(target: self, action: #selector(self.showLinkPreviewAction(sender:)))
+        
+        
+        if let actualLinkIndex = self.delegate?.getActualLinkPreview() {
+            cell.changeLinkVisibilityIcon(for: indexPath.row == actualLinkIndex)
+        }
         
         return cell
-        
+    }
+    
+    
+    /* MARK: - Ações de Botões */
+    
+    /// Abre a página de edição do link
+    @objc func editAction(sender: UIButton) -> Void {
+        self.delegate?.openLinkPage(with: sender.tag)
+    }
+    
+    /// Define o preview
+    @objc func showLinkPreviewAction(sender: UIButton) -> Void {
+        self.delegate?.openLinkView(for: sender.tag)
     }
 }

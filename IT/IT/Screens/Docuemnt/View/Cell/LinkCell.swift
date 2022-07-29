@@ -50,9 +50,12 @@ class LinkCell: UITableViewCell {
     /* MARK: - Encapsulamento */
     
     /// Configura a célula
-    public func setupCell(with config: LinkInfo) -> Void {
+    public func setupCell(with config: LinkInfo, tag: Int) -> Void {
         self.titleField.text = config.name
         self.tagView.setupTag(with: config.categorie)
+        
+        self.linkViewButton.tag = tag
+        self.optionsButton.tag = tag
     }
     
     
@@ -118,7 +121,7 @@ class LinkCell: UITableViewCell {
     private func setupStaticTexts() -> Void {
         /* Labels */
         self.titleField.setupText(with: FontConfig(
-            fontSize: self.contentView.bounds.height*0.55, weight: .medium)
+            fontSize: self.contentView.bounds.height*0.5, weight: .medium)
         )
         
         
@@ -154,8 +157,7 @@ class LinkCell: UITableViewCell {
             
             self.titleField.rightAnchor.constraint(equalTo: self.tagView.leftAnchor, constant: -space),
             self.titleField.leftAnchor.constraint(equalTo: self.contentView.leftAnchor, constant: space),
-            self.titleField.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: space),
-            self.titleField.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -space),
+            self.titleField.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor),
         ])
     }
     
