@@ -100,7 +100,7 @@ class LinkInfoCell: UITableViewCell {
     /// Define os textos que são estáticos (os textos em si que vão sempre ser o mesmo)
     private func setupStaticTexts() -> Void {
         self.inputField.setupText(with: FontConfig(
-            fontSize: self.contentView.bounds.height * 0.4, weight: .medium)
+            fontSize: self.contentView.bounds.height * 0.35, weight: .medium)
         )
     }
     

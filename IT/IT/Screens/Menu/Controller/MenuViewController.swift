@@ -109,6 +109,15 @@ class MenuViewController: UIViewController, MenuViewControllerDelegate {
         
         self.present(vc, animated: false)
     }
+    
+    
+    /// Ação de atualizar a view com e os dados das tabelas e collections
+    @objc private func reloadDocumentsAction() -> Void {
+        self.myView.reloadDocuments()
+        self.reloadGroupCollection()
+        self.reloadInputViews()
+        self.myView.reloadInputViews()
+    }
         
     
     
@@ -141,6 +150,8 @@ class MenuViewController: UIViewController, MenuViewControllerDelegate {
         self.myView.setNewGroupAction(target: self, action: #selector(self.showGroupsAction))
         
         self.myView.setNewDocumentAction(target: self, action: #selector(self.showDocumentAction))
+        
+        self.myView.setReloadAction(target: self, action: #selector(self.reloadDocumentsAction))
     }
     
     
@@ -151,38 +162,5 @@ class MenuViewController: UIViewController, MenuViewControllerDelegate {
         for _ in 0..<5 {
             EditGroupController.groups.append(tag)
         }
-    }
-    
-    
-    
-    private func getDocumentTest() -> Document {
-        return Document(
-            group: "Academy",
-            categories: [
-                TagConfig(text: "Categoria", color: .red),
-                TagConfig(text: "Categoria", color: .blue),
-                TagConfig(text: "Categoria", color: .brown),
-                TagConfig(text: "Categoria", color: .yellow),
-                TagConfig(text: "Categoria", color: .orange)
-            ],
-            title: "Como fazer um padrão de arquivo?",
-            links: [
-                LinkInfo(
-                    name: "Padrão de comentário",
-                    categorie: TagConfig(text: "Notion", color: .orange),
-                    link: "https://kings-gui.notion.site/Padroniza-o-do-c-digo-cf5fd2bdeee448da892c462bd02fc572"
-                ),
-                LinkInfo(
-                    name: "Padrão de comentário",
-                    categorie: TagConfig(text: "Notion", color: .orange),
-                    link: "https://kings-gui.notion.site/Padroniza-o-do-c-digo-cf5fd2bdeee448da892c462bd02fc572"
-                ),
-                LinkInfo(
-                    name: "Padrão de comentário",
-                    categorie: TagConfig(text: "Notion", color: .orange),
-                    link: "https://kings-gui.notion.site/Padroniza-o-do-c-digo-cf5fd2bdeee448da892c462bd02fc572"
-                )
-            ]
-        )
     }
 }

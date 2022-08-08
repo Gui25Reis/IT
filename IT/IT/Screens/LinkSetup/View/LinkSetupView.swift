@@ -44,8 +44,6 @@ class LinkSetupView: UIView {
         
         self.setupViews()
         self.setupConstraints()
-        
-        self.setUrlWarning(to: true)
     }
     
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
@@ -55,16 +53,21 @@ class LinkSetupView: UIView {
     /* MARK: - Encapsulamento */
     
     /// Define o texto da aviso a partir da validação da URL
-    public func setUrlWarning(to warning: Bool) -> Void {
-        switch warning {
-        case true:
-            self.linkWarningLabel.text = "URL Válida"
-            self.linkWarningLabel.textColor = .green
-            
-        case false:
-            self.linkWarningLabel.text = "URL Inválida"
-            self.linkWarningLabel.textColor = .red
+    public func setUrlWarning(to warning: Bool?) -> Void {
+        if let warning = warning {
+            switch warning {
+            case true:
+                self.linkWarningLabel.text = "URL Válida"
+                self.linkWarningLabel.textColor = .green
+                
+            case false:
+                self.linkWarningLabel.text = "URL Inválida"
+                self.linkWarningLabel.textColor = .red
+            }
+        } else {
+            self.linkWarningLabel.text = ""
         }
+        
     }
     
     

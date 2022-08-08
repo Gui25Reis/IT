@@ -33,13 +33,16 @@ class DocumentsDataSource: NSObject, UICollectionViewDataSource {
                     name: "Padrão de comentários", categorie: TagConfig(text: "", color: nil),
                     link: "https://kings-gui.notion.site/Padroniza-o-do-c-digo-cf5fd2bdeee448da892c462bd02fc572"
                 )
-            ]
+            ],
+            isFavorited: false
         )
         
         for num in 0..<70 {
             document.title = "Título do documento nº\(num+1) !!!!"
             self.documents.append(document)
         }
+        
+        self.documents[0].isFavorited = true
     }
 
     

@@ -80,7 +80,7 @@ class DocumentViewController: UIViewController, DocumentControllerDelegate {
     }
     
     
-    internal func openLinkView(for index: Int) -> Void {
+    internal func openLinkOnWebView(for index: Int) -> Void {
         if let document = self.document {
             let _ = self.myView.setUrl(with: document.links[index].link)
             
@@ -92,6 +92,39 @@ class DocumentViewController: UIViewController, DocumentControllerDelegate {
     
     internal func getActualLinkPreview() -> Int {
         return self.linkPreview
+    }
+    
+    
+    internal func copyLinkinfo(for index: Int) -> Void {
+        if let document = self.document {
+            let clipboardText = """
+            Se liga nesse link que eu salvei:
+            
+            >> \(document.links[index].name)
+            \(document.links[index].link)
+            """
+            
+            UIPasteboard.general.string = clipboardText
+            
+            self.myView.showCopyWarning()
+        }
+    }
+    
+    
+    internal func deleteLink(for index: Int) -> Void {
+        // self.document?.links.remove(at: index)
+        // self.myView.reloadTableData()
+    }
+    
+    
+    internal func openLinkOnBrowser(for index: Int) -> Void {
+        if let document = self.document {
+            let link = document.links[index].link
+            
+            if let url = URL(string: link), UIApplication.shared.canOpenURL(url) {
+                UIApplication.shared.open(url)
+            }
+        }
     }
     
     
@@ -110,6 +143,33 @@ class DocumentViewController: UIViewController, DocumentControllerDelegate {
     }
     
     
+    /// Ação do botão de compartilhar o documento
+    @objc private func shareAction() -> Void {
+        // Chama o botão de compartilhar
+        #if targetEnvironment(macCatalyst)
+        self.createDocumentCopy()
+        
+        #else
+        let vc = UIActivityViewController(activityItems: [], applicationActivities: [])
+        vc.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem     // Ipad
+        self.present(vc, animated: true)
+        
+        #endif
+    }
+    
+    
+    /// Ação do botão de fechar a página
+    @objc private func favoriteAction() -> Void {
+        self.myView.changeFavoriteIcon(for: nil)
+    }
+    
+    
+    /// Ação do botão de fechar a página
+    @objc private func openCategoriesPageAction() -> Void {
+        self.myView.changeFavoriteIcon(for: nil)
+    }
+    
+    
     
     /* MARK: - Configurações */
     
@@ -121,7 +181,9 @@ class DocumentViewController: UIViewController, DocumentControllerDelegate {
         }
         
         // Table -> Links
+        self.linksDelegate.setDelegate(with: self)
         self.myView.setLinksTableDelegate(with: self.linksDelegate)
+        
         if let linksDataSource = self.linksDataSource {
             self.myView.setLinksTableDataSource(with: linksDataSource)
         }
@@ -135,7 +197,14 @@ class DocumentViewController: UIViewController, DocumentControllerDelegate {
     /// Define as ações dos botões da tela
     private func setupButtonsAction() -> Void {
         self.myView.setExitAction(target: self, action: #selector(self.closeAction))
+        
+        self.myView.setShareAction(target: self, action: #selector(self.shareAction))
+        self.myView.setFavoriteAction(target: self, action: #selector(self.favoriteAction))
+        
         self.myView.setNewLinkAction(target: self, action: #selector(self.linkSetupAction))
+        
+        let collectionTap = UITapGestureRecognizer(target: self, action: #selector(self.openCategoriesPageAction))
+        self.myView.setCollectionTapAction(tap: collectionTap)
     }
     
     
@@ -151,12 +220,43 @@ class DocumentViewController: UIViewController, DocumentControllerDelegate {
             self.linksDataSource = linksDataSource
             
             
+            
+            
             // Link padrão
             if !document.links.isEmpty {
                 let _ = self.myView.setUrl(with: document.links[0].link)
             }
         } else {
             self.myView.setupNewDocument()
+        }
+    }
+    
+    
+    
+    /* MARK: - Outros */
+    
+    /// Junta as informações do documento pra ser copiada no clipboard
+    private func createDocumentCopy() -> Void {
+        if let document = self.document {
+            // Criando texto para ser copiado
+            var clipboardText = """
+            Olha esse documento:
+            
+            >> \(document.title)
+            
+            Links:\n
+            """
+            
+            for link in document.links {
+                clipboardText += """
+                > \(link.name)
+                \(link.link)\n\n
+                """
+            }
+            
+            // Add no clipboard
+            UIPasteboard.general.string = clipboardText
+            self.myView.showCopyWarning()
         }
     }
 }

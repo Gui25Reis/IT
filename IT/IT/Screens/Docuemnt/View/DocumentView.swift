@@ -13,11 +13,15 @@ class DocumentView: UIView {
     
     private let shareButton = CustomViews.newButton()
     
+    private let favoriteButton = CustomViews.newButton()
+    
     private let deleteButton = CustomViews.newButton()
     
     private let titleField = CustomViews.newTextField()
     
     private let webView = CustomViews.newWebView()
+    
+    private let copyWarning = CopyWarningView()
     
     
     // Collection -> tag
@@ -59,6 +63,9 @@ class DocumentView: UIView {
     
     /// Salva a última dimensão da tela
     private var viewSize: CGRect = .zero
+    
+    /// Estado de quando o documento está como favorito ou não
+    private var isFavorited: Bool = false
     
 
 
@@ -103,6 +110,46 @@ class DocumentView: UIView {
     }
     
     
+    /// Mostra com animação o aviso de texto copiado
+    public func showCopyWarning() -> Void {
+        // Mostra a view
+        UIView.transition(
+            with: self.copyWarning, duration: 0.5, options: .transitionCrossDissolve,
+            animations: {
+                self.copyWarning.isHidden = false
+            }
+        )
+        
+        let delay: TimeInterval = 3
+        
+        // Executa a ação depois do delay
+        DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
+            self.copyWarning.isHidden = true
+        }
+    }
+    
+    
+    /// Define o ícone do botão de favorito ícone
+    public func changeFavoriteIcon(for visibility: Bool?) -> Void {
+        if let visibility = visibility {
+            self.isFavorited = visibility
+        } else {
+            self.isFavorited.toggle()
+        }
+        
+        var icon: AppButton = .favoriteFalse
+        if self.isFavorited {
+            icon = .favoriteTrue
+        }
+        
+        self.favoriteButton.setupIcon(with: IconConfig(
+            icon: icon, size: self.bounds.height * 0.021,
+            weight: .regular, scale: .medium)
+        )
+    }
+
+    
+    
     /* Ações de Botões */
     
     /// Ação do botão de sair da página
@@ -113,6 +160,11 @@ class DocumentView: UIView {
     /// Ação do botão de compartilhar o conteúdo da página
     public func setShareAction(target: Any?, action: Selector) -> Void {
         self.shareButton.addTarget(target, action: action, for: .touchDown)
+    }
+    
+    /// Ação do botão de compartilhar o conteúdo da página
+    public func setFavoriteAction(target: Any?, action: Selector) -> Void {
+        self.favoriteButton.addTarget(target, action: action, for: .touchDown)
     }
     
     /// Ação do botão de deletar documento
@@ -145,6 +197,13 @@ class DocumentView: UIView {
     }
     
     
+    /// Ação de quando clica na collection
+    public func setCollectionTapAction(tap: UITapGestureRecognizer) -> Void {
+        self.tagCollection.addGestureRecognizer(tap)
+    }
+    
+    
+    
     /* Table */
         
     /// Define qual vai ser o Data Source da table
@@ -170,7 +229,7 @@ class DocumentView: UIView {
     public override func layoutSubviews() -> Void {
         super.layoutSubviews()
         
-        if self.bounds != self.viewSize {
+        //if self.bounds != self.viewSize {
             self.setupUI()
             self.setupStaticTexts()
             self.setupDynamicConstraints()
@@ -178,7 +237,7 @@ class DocumentView: UIView {
             self.reloadInputViews()
             
             self.viewSize = self.bounds
-        }
+        //}
     }
     
     
@@ -191,6 +250,7 @@ class DocumentView: UIView {
         
         self.addSubview(self.backButton)
         self.addSubview(self.shareButton)
+        self.addSubview(self.favoriteButton)
         self.addSubview(self.deleteButton)
         
         self.addSubview(self.titleField)
@@ -201,6 +261,8 @@ class DocumentView: UIView {
         self.addSubview(self.linkLabel)
         self.addSubview(self.newLinkButton)
         self.addSubview(self.linkTable)
+        
+        self.addSubview(self.copyWarning)
     }
     
     
@@ -242,6 +304,8 @@ class DocumentView: UIView {
         
         
         /* Botões */
+        self.changeFavoriteIcon(for: self.isFavorited)
+        
         self.backButton.setupIcon(with: IconConfig(
             icon: .back, size:  self.bounds.height * 0.024, weight: .regular, scale: .medium)
         )
@@ -267,7 +331,7 @@ class DocumentView: UIView {
     /// Define as constraints que são estáticas (que não vão mudar ao longo do código)
     private func setupConstraints() -> Void {
         NSLayoutConstraint.activate([
-            self.webView.topAnchor.constraint(equalTo: self.topAnchor),
+            self.webView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor),
             self.webView.rightAnchor.constraint(equalTo: self.rightAnchor),
             self.webView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
             self.webView.leadingAnchor.constraint(equalTo: self.centerXAnchor),
@@ -280,6 +344,9 @@ class DocumentView: UIView {
             self.shareButton.centerYAnchor.constraint(equalTo: self.backButton.centerYAnchor),
             
             
+            self.favoriteButton.centerYAnchor.constraint(equalTo: self.backButton.centerYAnchor),
+            
+            
             // Collection
             self.newTagButton.leadingAnchor.constraint(equalTo: self.titleField.leadingAnchor),
             
@@ -287,7 +354,7 @@ class DocumentView: UIView {
             self.tagCollection.centerYAnchor.constraint(equalTo: self.newTagButton.centerYAnchor),
             self.tagCollection.trailingAnchor.constraint(equalTo: self.titleField.trailingAnchor),
             
-            
+                        
             // Table
             self.linkLabel.leadingAnchor.constraint(equalTo: self.titleField.leadingAnchor),
             self.linkLabel.rightAnchor.constraint(equalTo: self.centerXAnchor),
@@ -299,6 +366,12 @@ class DocumentView: UIView {
             
             self.linkTable.leadingAnchor.constraint(equalTo: self.titleField.leadingAnchor),
             self.linkTable.trailingAnchor.constraint(equalTo: self.titleField.trailingAnchor),
+            
+            
+            // Copy Warning
+            self.copyWarning.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -20),
+            self.copyWarning.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            self.copyWarning.widthAnchor.constraint(equalToConstant: 220),
         ])
     }
     
@@ -312,21 +385,23 @@ class DocumentView: UIView {
         NSLayoutConstraint.deactivate(self.dynamicConstraints)
     
         self.dynamicConstraints = [
-            self.backButton.topAnchor.constraint(equalTo: self.topAnchor, constant: space),
+            self.backButton.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: space/1.7),
             self.backButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: space),
             
             
-            self.shareButton.rightAnchor.constraint(equalTo: self.deleteButton.leftAnchor, constant: -space),
+            self.shareButton.rightAnchor.constraint(equalTo: self.favoriteButton.leftAnchor, constant: -space/1.5),
+            
+            self.favoriteButton.rightAnchor.constraint(equalTo: self.deleteButton.leftAnchor, constant: -space/1.5),
             
             
-            self.titleField.topAnchor.constraint(equalTo: self.backButton.bottomAnchor, constant: between),
+            self.titleField.topAnchor.constraint(equalTo: self.backButton.bottomAnchor, constant: between/2),
             self.titleField.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: space),
             self.titleField.rightAnchor.constraint(equalTo: self.webView.leftAnchor, constant: -space),
             
             
             // Collection
             self.newTagButton.topAnchor.constraint(equalTo: self.titleField.bottomAnchor, constant: space),
-            
+    
             
             self.tagCollection.leftAnchor.constraint(equalTo: self.newTagButton.rightAnchor, constant: space/2),
             self.tagCollection.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.024),
@@ -337,7 +412,7 @@ class DocumentView: UIView {
             
             
             self.linkTable.topAnchor.constraint(equalTo: self.linkLabel.bottomAnchor, constant: space/2),
-            self.linkTable.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -space)
+            self.linkTable.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -space),
         ]
         
         NSLayoutConstraint.activate(self.dynamicConstraints)

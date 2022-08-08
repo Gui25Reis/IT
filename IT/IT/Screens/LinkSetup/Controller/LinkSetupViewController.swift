@@ -3,7 +3,7 @@
 /* Bibliotecas necessárias: */
 import UIKit
 
-class LinkSetupViewController: UIViewController {
+class LinkSetupViewController: UIViewController, LinkSetupViewControllerDelegate {
     
     /* MARK: - Atributos */
     
@@ -53,6 +53,26 @@ class LinkSetupViewController: UIViewController {
     
     
     
+    /* MARK: - Delegate (Protocol) */
+    
+    internal func validateUrl(with url: String?) {
+        var validate: Bool?
+        if let url = url {
+            if url.count == 0 {
+                validate = nil
+            } else {
+                if let testUrl = URL(string: url) {
+                    validate = UIApplication.shared.canOpenURL(testUrl)
+                } else {
+                    validate = false
+                }
+            }
+        }
+        self.myView.setUrlWarning(to: validate)
+    }
+    
+    
+    
     /* MARK: - Ações de botões */
     
     @objc private func cancelAction() -> Void {
@@ -70,6 +90,7 @@ class LinkSetupViewController: UIViewController {
     
     
     private func setupDelegates() -> Void {
+        self.linkSetupDataSource.setDelegate(wirh: self)
         self.myView.setTableDataSource(to: self.linkSetupDataSource)
         
         self.myView.reloadTableData()

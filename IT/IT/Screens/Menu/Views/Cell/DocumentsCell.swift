@@ -18,6 +18,9 @@ class DocumentsCell: UICollectionViewCell {
     }()
     
     
+    private let favoriteButton = CustomViews.newButton()
+    
+
     private let tagsCollection: UICollectionView = {
         let cv = CustomViews.newCollection()
         cv.isScrollEnabled = false
@@ -43,6 +46,7 @@ class DocumentsCell: UICollectionViewCell {
     private var viewSize: CGRect = .zero
     
     
+    
     /* MARK: - Construtor */
     
     public override init(frame: CGRect) {
@@ -64,6 +68,8 @@ class DocumentsCell: UICollectionViewCell {
     /// Configurando a célula a partir das informações do documento
     public func setupCell(with document: Document) -> Void {
         self.titleLabel.text = document.title
+        
+        self.favoriteButton.isHidden = !document.isFavorited
     }
     
     
@@ -78,7 +84,7 @@ class DocumentsCell: UICollectionViewCell {
     public override func layoutSubviews() -> Void {
         super.layoutSubviews()
         
-        if self.bounds != self.viewSize {
+        //if self.bounds != self.viewSize {
             self.setupStaticTexts()
             self.setupDynamicConstraints()
             self.setupUI()
@@ -87,7 +93,7 @@ class DocumentsCell: UICollectionViewCell {
             self.tagsCollection.reloadInputViews()
             
             self.viewSize = self.bounds
-        }
+        //}
     }
     
     
@@ -97,6 +103,7 @@ class DocumentsCell: UICollectionViewCell {
     /// Adiciona os elementos (Views) na tela
     private func setupViews() -> Void {
         self.contentView.addSubview(self.titleLabel)
+        self.contentView.addSubview(self.favoriteButton)
         self.contentView.addSubview(self.tagsCollection)
     }
     
@@ -128,6 +135,11 @@ class DocumentsCell: UICollectionViewCell {
         self.titleLabel.setupText(with: FontConfig(
             fontSize: self.bounds.height * 0.18, weight: .semibold)
         )
+        
+        /* Botões */
+        self.favoriteButton.setupIcon(with: IconConfig(
+            icon: .favoriteTrue, size: self.bounds.height * 0.1, weight: .regular, scale: .medium)
+        )
     }
     
     
@@ -144,7 +156,11 @@ class DocumentsCell: UICollectionViewCell {
             self.titleLabel.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: space),
             self.titleLabel.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: space),
             self.titleLabel.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -space),
-            self.titleLabel.bottomAnchor.constraint(equalTo: self.tagsCollection.topAnchor)
+            self.titleLabel.bottomAnchor.constraint(equalTo: self.tagsCollection.topAnchor),
+            
+            
+            self.favoriteButton.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: space),
+            self.favoriteButton.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -space)
         ])
     }
     

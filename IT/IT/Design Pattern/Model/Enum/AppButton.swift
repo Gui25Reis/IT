@@ -18,7 +18,7 @@ enum AppButton: CustomStringConvertible {
     /// Símbolo - 􀅉
     case reload
     
-    /// Símbolo - 􀍠
+    /// Símbolo - 􀍡
     case menu
     
     /// Símbolo - 􀋮
@@ -42,6 +42,18 @@ enum AppButton: CustomStringConvertible {
     /// Símbolo - 􀋃
     case favoriteTrue
     
+    /// Símbolo - 􀈟
+    case goToWeb
+    
+    /// Símbolo - 􀈊
+    case edit
+    
+    /// Símbolo - 􀉃
+    case copyLink
+    
+    /// Símbolo - 􀋡
+    case tag
+    
     
     var description: String {
         switch self {
@@ -50,7 +62,7 @@ enum AppButton: CustomStringConvertible {
         case .share: return "square.and.arrow.up"
         case .add: return "plus"
         case .reload: return "arrow.counterclockwise"
-        case .menu: return "ellipsis"
+        case .menu: return "ellipsis.circle"
         case .visible: return "eye.fill"
         case .notVisible: return "eye"
         case .favoriteSquare: return "star.square"
@@ -58,6 +70,10 @@ enum AppButton: CustomStringConvertible {
         case .back: return "arrow.backward"
         case .favoriteFalse: return "star"
         case .favoriteTrue: return "star.fill"
+        case .goToWeb: return "paperplane"
+        case .edit: return "pencil"
+        case .copyLink: return "doc.on.clipboard"
+        case .tag: return "tag"
         }
     }
 }

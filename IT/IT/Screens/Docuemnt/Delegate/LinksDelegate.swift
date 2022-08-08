@@ -7,15 +7,15 @@ class LinksDelegate: NSObject, UITableViewDelegate {
     
     /* MARK: - Atributos */
     
-    // private weak var delegate: ?
+    private weak var delegate: DocumentControllerDelegate?
         
 
     
     /* MARK: - Encapsulamento */
     
-    // public func setDelegate(with delegate: ) -> Void {
-    //     self.delegate = delegate
-    // }
+     public func setDelegate(with delegate: DocumentControllerDelegate) -> Void {
+         self.delegate = delegate
+     }
     
     
     
@@ -27,5 +27,7 @@ class LinksDelegate: NSObject, UITableViewDelegate {
 
         tableView.deselectRow(at: indexPath, animated: true)
         tableView.reloadInputViews()
+        
+        self.delegate?.openLinkPage(with: indexPath.row)
     }
 }

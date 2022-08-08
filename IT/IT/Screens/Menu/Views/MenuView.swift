@@ -214,7 +214,7 @@ class MenuView: UIView {
         )
         
         self.tagsButton.setupIcon(with: IconConfig(
-            icon: .search, size: self.bounds.height * 0.022, weight: .regular, scale: .medium)
+            icon: .tag, size: self.bounds.height * 0.022, weight: .regular, scale: .medium)
         )
     }
     
@@ -250,12 +250,11 @@ class MenuView: UIView {
         NSLayoutConstraint.deactivate(self.dynamicConstraints)
         
         let space = self.bounds.height*0.022
-        let negSpace = -space/2
         
         let between: CGFloat = self.bounds.height*0.015
         
         self.dynamicConstraints = [
-            self.titleLabel.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: space),
+            self.titleLabel.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: space/2),
             
             // Botões da esquerda
             self.newDocumentButton.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: space),
@@ -271,7 +270,7 @@ class MenuView: UIView {
             self.groupView.heightAnchor.constraint(equalToConstant: self.bounds.height * 0.04),
             
             self.documentsCollection.topAnchor.constraint(equalTo: self.groupView.bottomAnchor, constant: space),
-            self.documentsCollection.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: negSpace),
+            self.documentsCollection.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -space/2),
             self.documentsCollection.widthAnchor.constraint(equalToConstant: self.bounds.width * 0.98),
         ]
         

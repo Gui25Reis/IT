@@ -8,6 +8,9 @@ class LinkSetupDataSource: NSObject, UITableViewDataSource {
     /* MARK: - Atributos */
     
     private var linkInfo: LinkInfo?
+    
+    
+    private var delegate: LinkSetupViewControllerDelegate?
 
     
     /* MARK: - Construtor */
@@ -21,6 +24,11 @@ class LinkSetupDataSource: NSObject, UITableViewDataSource {
     
     public func setLinkInfo(wirh linkInfo: LinkInfo) -> Void {
         self.linkInfo = linkInfo
+    }
+    
+    
+    public func setDelegate(wirh delegate: LinkSetupViewControllerDelegate) -> Void {
+        self.delegate = delegate
     }
     
     
@@ -49,11 +57,23 @@ class LinkSetupDataSource: NSObject, UITableViewDataSource {
 
         } else {
             cell.setBackgroundText(with: "Link (Url)")
+            cell.setTextFieldAction(target: self, action: #selector(self.checkUrlAction(sender:)))
             if let link = self.linkInfo?.link {
                 cell.setupCell(with: link, tag: 0)
             }
         }
         
         return cell
+    }
+    
+    
+    
+    /* MARK: - Ações de Botões */
+    
+    /// Ação do TextField que é acionada toda vez que tem uma modificação
+    @objc private func checkUrlAction(sender: UITextField) -> Void {
+        if let delegate = self.delegate {
+            delegate.validateUrl(with: sender.text)
+        }
     }
 }

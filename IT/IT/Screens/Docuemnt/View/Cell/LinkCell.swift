@@ -12,7 +12,7 @@ class LinkCell: UITableViewCell {
     
     // Views
     
-    private let titleField = CustomViews.newTextField()
+    private let titleField = CustomViews.newLabel()
     
     private let tagView = TagView()
     
@@ -83,8 +83,9 @@ class LinkCell: UITableViewCell {
     
     
     /// Define a ação do botão de menu de opções
-    public func setOptionsAction(target: Any?, action: Selector) -> Void {
-        self.optionsButton.addTarget(target, action: action, for: .touchDown)
+    public func setOptionsMenu(menu: UIMenu) -> Void {
+        self.optionsButton.menu = menu
+        self.optionsButton.showsMenuAsPrimaryAction = true
     }
      
  
