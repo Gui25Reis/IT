@@ -6,7 +6,7 @@ import UIKit
 class DocumentsDataSource: NSObject, UICollectionViewDataSource {
     
     /* MARK: - Atributos */
-    private var documents: [Document] = []
+    public var documents: [Document] = []
     
     private var dataSources: [Int: DocumentTagsDataSource] = [:]
     
@@ -16,19 +16,33 @@ class DocumentsDataSource: NSObject, UICollectionViewDataSource {
     override init() {
         super.init()
         
-        let document = Document(
+        var document = Document(
             group: "Teste",
             categories: [
                 TagConfig(text: "Teste", color: .tertiaryLabel),
                 TagConfig(text: "Teste", color: .tertiaryLabel),
                 TagConfig(text: "Teste", color: .tertiaryLabel)
             ],
-            title: "Título do documento!!!!"
+            title: "Título do documento nº !!!!",
+            links: [
+                LinkInfo(
+                    name: "Esconder scroll", categorie: TagConfig(text: "", color: nil),
+                    link: "https://kings-gui.notion.site/Como-esconder-a-barra-de-rolagem-scroll-bar-da-Collection-ecfe3bc7538a482c8a052f2d0e35c6e6"
+                ),
+                LinkInfo(
+                    name: "Padrão de comentários", categorie: TagConfig(text: "", color: nil),
+                    link: "https://kings-gui.notion.site/Padroniza-o-do-c-digo-cf5fd2bdeee448da892c462bd02fc572"
+                )
+            ],
+            isFavorited: false
         )
         
-        for _ in 0..<70 {
+        for num in 0..<70 {
+            document.title = "Título do documento nº\(num+1) !!!!"
             self.documents.append(document)
         }
+        
+        self.documents[0].isFavorited = true
     }
 
     
@@ -66,7 +80,6 @@ class DocumentsDataSource: NSObject, UICollectionViewDataSource {
         
         cell.setTagsCollectionDataSource(with: documentTagsDataSource)
         
-        collectionView.reloadData()
         return cell
     }
     

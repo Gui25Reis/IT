@@ -10,4 +10,7 @@ protocol MenuViewControllerDelegate: AnyObject {
     
     /// Atualiza os dados da collection de grupos
     func reloadGroupCollection() -> Void
+    
+    /// Abre a página do documento mostrando as informações dele
+    func openDocumentPage(at documentIndex: Int) -> Void
 }

@@ -9,7 +9,7 @@ enum AppButton: CustomStringConvertible {
     /// Símbolo - 􀈑
     case trash
     
-    /// Símbolo - 􀊫
+    /// Símbolo - 􀈂
     case share
     
     /// Símbolo - 􀅼
@@ -18,20 +18,41 @@ enum AppButton: CustomStringConvertible {
     /// Símbolo - 􀅉
     case reload
     
-    /// Símbolo - 􀍠
+    /// Símbolo - 􀍡
     case menu
     
-    /// Símbolo - 􀋭
+    /// Símbolo - 􀋮
     case visible
     
-    /// Símbolo - 􀋯
+    /// Símbolo - 􀋭
     case notVisible
     
     /// Símbolo - 􀠧
-    case favorite
+    case favoriteSquare
     
     /// Símbolo - 􀃜
-    case addQuare
+    case addSquare
+    
+    /// Símbolo - 􀰌
+    case back
+    
+    /// Símbolo - 􀋂
+    case favoriteFalse
+    
+    /// Símbolo - 􀋃
+    case favoriteTrue
+    
+    /// Símbolo - 􀈟
+    case goToWeb
+    
+    /// Símbolo - 􀈊
+    case edit
+    
+    /// Símbolo - 􀉃
+    case copyLink
+    
+    /// Símbolo - 􀋡
+    case tag
     
     
     var description: String {
@@ -41,11 +62,18 @@ enum AppButton: CustomStringConvertible {
         case .share: return "square.and.arrow.up"
         case .add: return "plus"
         case .reload: return "arrow.counterclockwise"
-        case .menu: return "ellipsis"
-        case .visible: return "eye"
-        case .notVisible: return "eye.slash"
-        case .favorite: return "star.square"
-        case .addQuare: return "plus.square"
+        case .menu: return "ellipsis.circle"
+        case .visible: return "eye.fill"
+        case .notVisible: return "eye"
+        case .favoriteSquare: return "star.square"
+        case .addSquare: return "plus.square"
+        case .back: return "arrow.backward"
+        case .favoriteFalse: return "star"
+        case .favoriteTrue: return "star.fill"
+        case .goToWeb: return "paperplane"
+        case .edit: return "pencil"
+        case .copyLink: return "doc.on.clipboard"
+        case .tag: return "tag"
         }
     }
 }

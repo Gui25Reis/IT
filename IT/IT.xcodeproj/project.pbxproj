@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		220612C22892601A0088B646 /* LinkSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220612C12892601A0088B646 /* LinkSetupViewController.swift */; };
+		220612C92892604C0088B646 /* LinkSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220612C82892604C0088B646 /* LinkSetupView.swift */; };
+		220612CB28926A9C0088B646 /* LinkInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220612CA28926A9C0088B646 /* LinkInfoCell.swift */; };
+		220612CD28926BCC0088B646 /* LinkSetupDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220612CC28926BCC0088B646 /* LinkSetupDataSource.swift */; };
+		220AAC2128A0DF8D00303C14 /* CopyWarning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220AAC2028A0DF8D00303C14 /* CopyWarning.swift */; };
 		220D86BB287778D800F63E73 /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220D86BA287778D800F63E73 /* Document.swift */; };
 		220D86C12878159900F63E73 /* DocumentsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220D86C02878159900F63E73 /* DocumentsDelegate.swift */; };
 		220D86C4287815E100F63E73 /* DocumentsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220D86C3287815E100F63E73 /* DocumentsDataSource.swift */; };
@@ -21,10 +26,19 @@
 		220F95C2287CBCA500A1D30F /* UITextField+FontConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220F95C1287CBCA500A1D30F /* UITextField+FontConfig.swift */; };
 		220F95C4287CBEC400A1D30F /* EditGroupDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220F95C3287CBEC400A1D30F /* EditGroupDataSource.swift */; };
 		220F95C6287D1CEC00A1D30F /* EditGroupDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220F95C5287D1CEC00A1D30F /* EditGroupDelegate.swift */; };
+		2225C4A12887B5FA0028C376 /* DocumentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2225C4A02887B5FA0028C376 /* DocumentViewController.swift */; };
+		2225C4A32887B62A0028C376 /* DocumentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2225C4A22887B62A0028C376 /* DocumentView.swift */; };
+		2225C4A52887D01F0028C376 /* LinkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2225C4A42887D01F0028C376 /* LinkCell.swift */; };
+		2225C4A72887E60F0028C376 /* LinkInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2225C4A62887E60F0028C376 /* LinkInfo.swift */; };
+		2225C4A92887E9FC0028C376 /* LinksDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2225C4A82887E9FC0028C376 /* LinksDataSource.swift */; };
+		2225C4AB2887F3970028C376 /* LinksDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2225C4AA2887F3970028C376 /* LinksDelegate.swift */; };
 		223EB48E2876F2EF006BD32F /* DocumentsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223EB48D2876F2EF006BD32F /* DocumentsCell.swift */; };
 		223EB4902876F3D2006BD32F /* TagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223EB48F2876F3D2006BD32F /* TagView.swift */; };
 		223EB4932876F480006BD32F /* TagConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223EB4922876F480006BD32F /* TagConfig.swift */; };
 		223EB4972876F7C9006BD32F /* TagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223EB4962876F7C9006BD32F /* TagCell.swift */; };
+		22A60A762893BDB300A3727A /* DocumentViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A60A752893BDB300A3727A /* DocumentViewControllerDelegate.swift */; };
+		22A800822894BDC900BA564F /* LinkSetupViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A800812894BDC900BA564F /* LinkSetupViewControllerDelegate.swift */; };
+		22A800852894C7DA00BA564F /* UIImage+AppButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A800842894C7DA00BA564F /* UIImage+AppButton.swift */; };
 		22B765612876301800BE6ED1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B765602876301800BE6ED1 /* AppDelegate.swift */; };
 		22B765632876301800BE6ED1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B765622876301800BE6ED1 /* SceneDelegate.swift */; };
 		22B765652876301800BE6ED1 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B765642876301800BE6ED1 /* MenuViewController.swift */; };
@@ -42,6 +56,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		220612C12892601A0088B646 /* LinkSetupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkSetupViewController.swift; sourceTree = "<group>"; };
+		220612C82892604C0088B646 /* LinkSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkSetupView.swift; sourceTree = "<group>"; };
+		220612CA28926A9C0088B646 /* LinkInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkInfoCell.swift; sourceTree = "<group>"; };
+		220612CC28926BCC0088B646 /* LinkSetupDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkSetupDataSource.swift; sourceTree = "<group>"; };
+		220AAC2028A0DF8D00303C14 /* CopyWarning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyWarning.swift; sourceTree = "<group>"; };
 		220D86BA287778D800F63E73 /* Document.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
 		220D86C02878159900F63E73 /* DocumentsDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentsDelegate.swift; sourceTree = "<group>"; };
 		220D86C3287815E100F63E73 /* DocumentsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentsDataSource.swift; sourceTree = "<group>"; };
@@ -56,10 +75,19 @@
 		220F95C1287CBCA500A1D30F /* UITextField+FontConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+FontConfig.swift"; sourceTree = "<group>"; };
 		220F95C3287CBEC400A1D30F /* EditGroupDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditGroupDataSource.swift; sourceTree = "<group>"; };
 		220F95C5287D1CEC00A1D30F /* EditGroupDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditGroupDelegate.swift; sourceTree = "<group>"; };
+		2225C4A02887B5FA0028C376 /* DocumentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentViewController.swift; sourceTree = "<group>"; };
+		2225C4A22887B62A0028C376 /* DocumentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentView.swift; sourceTree = "<group>"; };
+		2225C4A42887D01F0028C376 /* LinkCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkCell.swift; sourceTree = "<group>"; };
+		2225C4A62887E60F0028C376 /* LinkInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkInfo.swift; sourceTree = "<group>"; };
+		2225C4A82887E9FC0028C376 /* LinksDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinksDataSource.swift; sourceTree = "<group>"; };
+		2225C4AA2887F3970028C376 /* LinksDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinksDelegate.swift; sourceTree = "<group>"; };
 		223EB48D2876F2EF006BD32F /* DocumentsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentsCell.swift; sourceTree = "<group>"; };
 		223EB48F2876F3D2006BD32F /* TagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagView.swift; sourceTree = "<group>"; };
 		223EB4922876F480006BD32F /* TagConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagConfig.swift; sourceTree = "<group>"; };
 		223EB4962876F7C9006BD32F /* TagCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCell.swift; sourceTree = "<group>"; };
+		22A60A752893BDB300A3727A /* DocumentViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentViewControllerDelegate.swift; sourceTree = "<group>"; };
+		22A800812894BDC900BA564F /* LinkSetupViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkSetupViewControllerDelegate.swift; sourceTree = "<group>"; };
+		22A800842894C7DA00BA564F /* UIImage+AppButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+AppButton.swift"; sourceTree = "<group>"; };
 		22B7655D2876301800BE6ED1 /* IT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IT.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22B765602876301800BE6ED1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		22B765622876301800BE6ED1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -90,6 +118,58 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		220612C028925FE00088B646 /* LinkSetup */ = {
+			isa = PBXGroup;
+			children = (
+				22A800802894BDB600BA564F /* Protocol */,
+				220612C72892603E0088B646 /* Delegate */,
+				220612C6289260360088B646 /* DataSource */,
+				220612C42892602A0088B646 /* View */,
+				220612C3289260230088B646 /* Controller */,
+			);
+			path = LinkSetup;
+			sourceTree = "<group>";
+		};
+		220612C3289260230088B646 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				220612C12892601A0088B646 /* LinkSetupViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		220612C42892602A0088B646 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				220612C52892602E0088B646 /* Cell */,
+				220612C82892604C0088B646 /* LinkSetupView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		220612C52892602E0088B646 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				220612CA28926A9C0088B646 /* LinkInfoCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		220612C6289260360088B646 /* DataSource */ = {
+			isa = PBXGroup;
+			children = (
+				220612CC28926BCC0088B646 /* LinkSetupDataSource.swift */,
+			);
+			path = DataSource;
+			sourceTree = "<group>";
+		};
+		220612C72892603E0088B646 /* Delegate */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Delegate;
+			sourceTree = "<group>";
+		};
 		220D86B52877765100F63E73 /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
@@ -176,11 +256,74 @@
 			path = Protocol;
 			sourceTree = "<group>";
 		};
+		2225C4982887B5A00028C376 /* Docuemnt */ = {
+			isa = PBXGroup;
+			children = (
+				2225C49D2887B5E00028C376 /* Protocol */,
+				2225C49C2887B5DA0028C376 /* DataSource */,
+				2225C49B2887B5D30028C376 /* Delegate */,
+				2225C49A2887B5D00028C376 /* View */,
+				2225C4992887B5CB0028C376 /* Controller */,
+			);
+			path = Docuemnt;
+			sourceTree = "<group>";
+		};
+		2225C4992887B5CB0028C376 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				2225C4A02887B5FA0028C376 /* DocumentViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		2225C49A2887B5D00028C376 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2225C49E2887B5E60028C376 /* Cell */,
+				2225C4A22887B62A0028C376 /* DocumentView.swift */,
+				220AAC2028A0DF8D00303C14 /* CopyWarning.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2225C49B2887B5D30028C376 /* Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				2225C4AA2887F3970028C376 /* LinksDelegate.swift */,
+			);
+			path = Delegate;
+			sourceTree = "<group>";
+		};
+		2225C49C2887B5DA0028C376 /* DataSource */ = {
+			isa = PBXGroup;
+			children = (
+				2225C4A82887E9FC0028C376 /* LinksDataSource.swift */,
+			);
+			path = DataSource;
+			sourceTree = "<group>";
+		};
+		2225C49D2887B5E00028C376 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				22A60A752893BDB300A3727A /* DocumentViewControllerDelegate.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		2225C49E2887B5E60028C376 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				2225C4A42887D01F0028C376 /* LinkCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		223EB4912876F469006BD32F /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				223EB4922876F480006BD32F /* TagConfig.swift */,
 				220D86BA287778D800F63E73 /* Document.swift */,
+				2225C4A62887E60F0028C376 /* LinkInfo.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -199,6 +342,14 @@
 				223EB4962876F7C9006BD32F /* TagCell.swift */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		22A800802894BDB600BA564F /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				22A800812894BDC900BA564F /* LinkSetupViewControllerDelegate.swift */,
+			);
+			path = Protocol;
 			sourceTree = "<group>";
 		};
 		22B765542876301800BE6ED1 = {
@@ -256,6 +407,8 @@
 				22B7656E2876301A00BE6ED1 /* LaunchScreen.storyboard */,
 				22B7657A2876306600BE6ED1 /* Menu */,
 				220F95AD287941C800A1D30F /* NewGroup */,
+				2225C4982887B5A00028C376 /* Docuemnt */,
+				220612C028925FE00088B646 /* LinkSetup */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -341,6 +494,7 @@
 				22B7658F28763E3800BE6ED1 /* UIButton+FontConfig.swift */,
 				22B7659128766DBF00BE6ED1 /* UILabel+FontConfig.swift */,
 				220F95C1287CBCA500A1D30F /* UITextField+FontConfig.swift */,
+				22A800842894C7DA00BA564F /* UIImage+AppButton.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -434,11 +588,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				220F95C4287CBEC400A1D30F /* EditGroupDataSource.swift in Sources */,
+				220AAC2128A0DF8D00303C14 /* CopyWarning.swift in Sources */,
 				22B7658C28763AA700BE6ED1 /* FontConfig.swift in Sources */,
 				220F95AF287BEF2600A1D30F /* DocumentTagsDataSource.swift in Sources */,
 				22B7657D2876317100BE6ED1 /* MenuView.swift in Sources */,
+				2225C4A12887B5FA0028C376 /* DocumentViewController.swift in Sources */,
+				2225C4A72887E60F0028C376 /* LinkInfo.swift in Sources */,
+				2225C4A92887E9FC0028C376 /* LinksDataSource.swift in Sources */,
 				22B7656B2876301800BE6ED1 /* IT.xcdatamodeld in Sources */,
 				220F95C6287D1CEC00A1D30F /* EditGroupDelegate.swift in Sources */,
+				2225C4A32887B62A0028C376 /* DocumentView.swift in Sources */,
+				22A800852894C7DA00BA564F /* UIImage+AppButton.swift in Sources */,
 				22B7658E28763DA600BE6ED1 /* IconConfig.swift in Sources */,
 				223EB4972876F7C9006BD32F /* TagCell.swift in Sources */,
 				220F95AA2878C44600A1D30F /* GroupDataSource.swift in Sources */,
@@ -446,20 +606,28 @@
 				22B76585287639F000BE6ED1 /* AppButton.swift in Sources */,
 				22B765612876301800BE6ED1 /* AppDelegate.swift in Sources */,
 				22B7659228766DBF00BE6ED1 /* UILabel+FontConfig.swift in Sources */,
+				22A800822894BDC900BA564F /* LinkSetupViewControllerDelegate.swift in Sources */,
 				22B7658928763A5C00BE6ED1 /* UIButton+IconConfig.swift in Sources */,
 				223EB4932876F480006BD32F /* TagConfig.swift in Sources */,
+				22A60A762893BDB300A3727A /* DocumentViewControllerDelegate.swift in Sources */,
 				223EB4902876F3D2006BD32F /* TagView.swift in Sources */,
 				220F95BB287C320700A1D30F /* EditGroupView.swift in Sources */,
 				220F95AC2878C84000A1D30F /* GroupDelegate.swift in Sources */,
+				220612C92892604C0088B646 /* LinkSetupView.swift in Sources */,
+				2225C4AB2887F3970028C376 /* LinksDelegate.swift in Sources */,
 				220D86C4287815E100F63E73 /* DocumentsDataSource.swift in Sources */,
+				220612CB28926A9C0088B646 /* LinkInfoCell.swift in Sources */,
 				22B7659428766E4B00BE6ED1 /* CustomViews.swift in Sources */,
 				22B7659028763E3800BE6ED1 /* UIButton+FontConfig.swift in Sources */,
 				220F95C0287CB95600A1D30F /* EditGroupCell.swift in Sources */,
 				223EB48E2876F2EF006BD32F /* DocumentsCell.swift in Sources */,
+				220612CD28926BCC0088B646 /* LinkSetupDataSource.swift in Sources */,
 				22B765632876301800BE6ED1 /* SceneDelegate.swift in Sources */,
 				220F95B2287C043300A1D30F /* MenuViewControllerDelegate.swift in Sources */,
+				220612C22892601A0088B646 /* LinkSetupViewController.swift in Sources */,
 				220D86BB287778D800F63E73 /* Document.swift in Sources */,
 				220F95A82878C00F00A1D30F /* GroupView.swift in Sources */,
+				2225C4A52887D01F0028C376 /* LinkCell.swift in Sources */,
 				220D86C12878159900F63E73 /* DocumentsDelegate.swift in Sources */,
 				220F95B9287C31E800A1D30F /* EditGroupController.swift in Sources */,
 				220F95C2287CBCA500A1D30F /* UITextField+FontConfig.swift in Sources */,

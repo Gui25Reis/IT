@@ -79,15 +79,44 @@ class MenuViewController: UIViewController, MenuViewControllerDelegate {
     }
     
     
+    internal func openDocumentPage(at documentIndex: Int) -> Void {
+        let document = self.documentsDataSource.documents[documentIndex]
+        
+        let vc = DocumentViewController(with: document)
+        vc.modalPresentationStyle = .fullScreen
+        
+        self.present(vc, animated: false)
+    }
+    
+    
     
     /* MARK: - Ações de botões */
     
+    /// Apresnera a tela de manter um grupo
     @objc private func showGroupsAction() -> Void {
         let vc = EditGroupController()
         vc.modalPresentationStyle = .overFullScreen
         vc.menuViewControllerDelegate = self
         
         self.present(vc, animated: false)
+    }
+    
+    
+    /// Apresenta a tela do documento
+    @objc private func showDocumentAction() -> Void {
+        let vc = DocumentViewController(with: nil)
+        vc.modalPresentationStyle = .fullScreen
+        
+        self.present(vc, animated: false)
+    }
+    
+    
+    /// Ação de atualizar a view com e os dados das tabelas e collections
+    @objc private func reloadDocumentsAction() -> Void {
+        self.myView.reloadDocuments()
+        self.reloadGroupCollection()
+        self.reloadInputViews()
+        self.myView.reloadInputViews()
     }
         
     
@@ -97,7 +126,9 @@ class MenuViewController: UIViewController, MenuViewControllerDelegate {
     /// Configura os delegates e Data Sources das views
     private func setupDelegates() -> Void {
         // Collection de documentos
+        self.documentsDelegate.setDelegate(self)
         self.myView.setDocumentsCollectionDelegate(with: self.documentsDelegate)
+        
         self.myView.setDocumentsCollectionDataSource(with: self.documentsDataSource)
         
         // Collection de grupos
@@ -117,6 +148,10 @@ class MenuViewController: UIViewController, MenuViewControllerDelegate {
     /// Define as ações dos botões
     private func setupButtonsAction() -> Void {
         self.myView.setNewGroupAction(target: self, action: #selector(self.showGroupsAction))
+        
+        self.myView.setNewDocumentAction(target: self, action: #selector(self.showDocumentAction))
+        
+        self.myView.setReloadAction(target: self, action: #selector(self.reloadDocumentsAction))
     }
     
     

@@ -26,6 +26,7 @@ class MenuView: UIView {
     
     
     // Outros
+    
     private let collectionLayout: UICollectionViewFlowLayout = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -50,8 +51,6 @@ class MenuView: UIView {
         
         self.setupViews()
         self.setupConstraints()
-        
-        // self.documentsCollection.backgroundColor = .tertiaryLabel
     }
     
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
@@ -143,7 +142,7 @@ class MenuView: UIView {
     public override func layoutSubviews() -> Void {
         super.layoutSubviews()
         
-        //if self.bounds != self.viewSize {
+        // if self.bounds != self.viewSize {
             self.setupUI()
             self.setupStaticTexts()
             self.setupDynamicConstraints()
@@ -152,7 +151,7 @@ class MenuView: UIView {
             //self.documentsCollection.reloadInputViews()
             
             self.viewSize = self.bounds
-        //}
+        // }
     }
     
     
@@ -178,11 +177,11 @@ class MenuView: UIView {
     private func setupUI() -> Void {
         self.documentsCollection.layer.cornerRadius = self.bounds.height * 0.016
         
+        // Layout
         let cellInLine: CGFloat = 7
         let spaceBetweenCell = self.documentsCollection.bounds.width * 0.005
         let sizeWithoutSpace = self.documentsCollection.bounds.width - (spaceBetweenCell*cellInLine)
         
-        // Layout
         let cellSize = CGSize(
             width: sizeWithoutSpace/cellInLine,
             height: self.documentsCollection.bounds.height * 0.16
@@ -215,7 +214,7 @@ class MenuView: UIView {
         )
         
         self.tagsButton.setupIcon(with: IconConfig(
-            icon: .search, size: self.bounds.height * 0.022, weight: .regular, scale: .medium)
+            icon: .tag, size: self.bounds.height * 0.022, weight: .regular, scale: .medium)
         )
     }
     
@@ -251,12 +250,11 @@ class MenuView: UIView {
         NSLayoutConstraint.deactivate(self.dynamicConstraints)
         
         let space = self.bounds.height*0.022
-        let negSpace = -space/2
         
         let between: CGFloat = self.bounds.height*0.015
         
         self.dynamicConstraints = [
-            self.titleLabel.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: space),
+            self.titleLabel.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: space/2),
             
             // Botões da esquerda
             self.newDocumentButton.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: space),
@@ -272,7 +270,7 @@ class MenuView: UIView {
             self.groupView.heightAnchor.constraint(equalToConstant: self.bounds.height * 0.04),
             
             self.documentsCollection.topAnchor.constraint(equalTo: self.groupView.bottomAnchor, constant: space),
-            self.documentsCollection.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: negSpace),
+            self.documentsCollection.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -space/2),
             self.documentsCollection.widthAnchor.constraint(equalToConstant: self.bounds.width * 0.98),
         ]
         
