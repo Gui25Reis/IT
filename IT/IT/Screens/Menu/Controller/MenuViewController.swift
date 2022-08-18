@@ -111,6 +111,15 @@ class MenuViewController: UIViewController, MenuViewControllerDelegate {
     }
     
     
+    /// Apresenta a tela do categorias
+    @objc private func showCategoriesAction() -> Void {
+        let vc = CategoriesViewController(with: .visualization)
+        vc.modalPresentationStyle = .overFullScreen
+        
+        self.present(vc, animated: false)
+    }
+    
+    
     /// Ação de atualizar a view com e os dados das tabelas e collections
     @objc private func reloadDocumentsAction() -> Void {
         self.myView.reloadDocuments()
@@ -152,6 +161,8 @@ class MenuViewController: UIViewController, MenuViewControllerDelegate {
         self.myView.setNewDocumentAction(target: self, action: #selector(self.showDocumentAction))
         
         self.myView.setReloadAction(target: self, action: #selector(self.reloadDocumentsAction))
+        
+        self.myView.setTagsAction(target: self, action: #selector(self.showCategoriesAction))
     }
     
     

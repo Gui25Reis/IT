@@ -13,7 +13,7 @@ class LinkSetupViewController: UIViewController, LinkSetupViewControllerDelegate
     /// Informações do link
     private var linkInfo: LinkInfo?
     
-    
+    /// Data Source da tabela das informações do link
     private let linkSetupDataSource = LinkSetupDataSource()
     
     
@@ -83,12 +83,14 @@ class LinkSetupViewController: UIViewController, LinkSetupViewControllerDelegate
     
     /* MARK: - Configurações */
     
+    /// Definindo as ações dos botões
     private func setupButtonAction() -> Void {
         self.myView.setCancelAction(target: self, action: #selector(self.cancelAction))
         self.myView.setSaveAction(target: self, action: #selector(self.cancelAction))
     }
     
     
+    /// Definindo os delegates e protocols
     private func setupDelegates() -> Void {
         self.linkSetupDataSource.setDelegate(wirh: self)
         self.myView.setTableDataSource(to: self.linkSetupDataSource)

@@ -166,7 +166,10 @@ class DocumentViewController: UIViewController, DocumentControllerDelegate {
     
     /// Ação do botão de fechar a página
     @objc private func openCategoriesPageAction() -> Void {
-        self.myView.changeFavoriteIcon(for: nil)
+        let vc = CategoriesViewController(with: .canSelect)
+        vc.modalPresentationStyle = .overFullScreen
+        
+        self.present(vc, animated: false)
     }
     
     
@@ -218,8 +221,6 @@ class DocumentViewController: UIViewController, DocumentControllerDelegate {
             let linksDataSource = LinksDataSource(links: document.links)
             linksDataSource.setDelegate(with: self)
             self.linksDataSource = linksDataSource
-            
-            
             
             
             // Link padrão
