@@ -7,7 +7,6 @@ class MenuViewController: UIViewController, MenuViewControllerDelegate {
     
     /* MARK: - Atributos */
     
-    
     /* Views */
     
     /// View principal que a classe vai controlar

@@ -38,6 +38,8 @@
 		223EB4902876F3D2006BD32F /* TagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223EB48F2876F3D2006BD32F /* TagView.swift */; };
 		223EB4932876F480006BD32F /* TagConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223EB4922876F480006BD32F /* TagConfig.swift */; };
 		223EB4972876F7C9006BD32F /* TagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223EB4962876F7C9006BD32F /* TagCell.swift */; };
+		224CA0AE28AF137D001B9DBF /* UIColor+getColorInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224CA0AD28AF137D001B9DBF /* UIColor+getColorInfo.swift */; };
+		224CA0B028AF1518001B9DBF /* ColorInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224CA0AF28AF1518001B9DBF /* ColorInfo.swift */; };
 		22673DF228AAFE8200BEFC79 /* EditInfoStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22673DF128AAFE8200BEFC79 /* EditInfoStyle.swift */; };
 		22673DF528AB0DD600BEFC79 /* CategorieSetupViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22673DF428AB0DD600BEFC79 /* CategorieSetupViewControllerDelegate.swift */; };
 		22673DF728AB0DEF00BEFC79 /* CategorieSetupDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22673DF628AB0DEF00BEFC79 /* CategorieSetupDataSource.swift */; };
@@ -98,6 +100,8 @@
 		223EB48F2876F3D2006BD32F /* TagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagView.swift; sourceTree = "<group>"; };
 		223EB4922876F480006BD32F /* TagConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagConfig.swift; sourceTree = "<group>"; };
 		223EB4962876F7C9006BD32F /* TagCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCell.swift; sourceTree = "<group>"; };
+		224CA0AD28AF137D001B9DBF /* UIColor+getColorInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+getColorInfo.swift"; sourceTree = "<group>"; };
+		224CA0AF28AF1518001B9DBF /* ColorInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorInfo.swift; sourceTree = "<group>"; };
 		22673DF128AAFE8200BEFC79 /* EditInfoStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditInfoStyle.swift; sourceTree = "<group>"; };
 		22673DF428AB0DD600BEFC79 /* CategorieSetupViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorieSetupViewControllerDelegate.swift; sourceTree = "<group>"; };
 		22673DF628AB0DEF00BEFC79 /* CategorieSetupDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorieSetupDataSource.swift; sourceTree = "<group>"; };
@@ -395,6 +399,14 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		224CA0AC28AF1363001B9DBF /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				224CA0AD28AF137D001B9DBF /* UIColor+getColorInfo.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		22673DEC28AAFD7500BEFC79 /* Ui Style */ = {
 			isa = PBXGroup;
 			children = (
@@ -530,6 +542,7 @@
 		22B7655F2876301800BE6ED1 /* IT */ = {
 			isa = PBXGroup;
 			children = (
+				224CA0AC28AF1363001B9DBF /* Extensions */,
 				22B765832876360600BE6ED1 /* IT.entitlements */,
 				22B765822876337F00BE6ED1 /* Design Pattern */,
 				220D86B52877765100F63E73 /* Protocol */,
@@ -643,6 +656,7 @@
 				22B7658A28763A9600BE6ED1 /* Enum */,
 				22B7658B28763AA700BE6ED1 /* FontConfig.swift */,
 				22B7658D28763DA600BE6ED1 /* IconConfig.swift */,
+				224CA0AF28AF1518001B9DBF /* ColorInfo.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -775,6 +789,7 @@
 				22B7658928763A5C00BE6ED1 /* UIButton+IconConfig.swift in Sources */,
 				223EB4932876F480006BD32F /* TagConfig.swift in Sources */,
 				22A60A762893BDB300A3727A /* DocumentViewControllerDelegate.swift in Sources */,
+				224CA0B028AF1518001B9DBF /* ColorInfo.swift in Sources */,
 				2232980C28AAF9180057E674 /* CategorieSetupViewController.swift in Sources */,
 				22673DF728AB0DEF00BEFC79 /* CategorieSetupDataSource.swift in Sources */,
 				223EB4902876F3D2006BD32F /* TagView.swift in Sources */,
@@ -784,6 +799,7 @@
 				2232980E28AAF9530057E674 /* CategorieSetupView.swift in Sources */,
 				226A327828AC5FCE008A7201 /* TextFieldDelegate.swift in Sources */,
 				2225C4AB2887F3970028C376 /* LinksDelegate.swift in Sources */,
+				224CA0AE28AF137D001B9DBF /* UIColor+getColorInfo.swift in Sources */,
 				220D86C4287815E100F63E73 /* DocumentsDataSource.swift in Sources */,
 				226A327628AC56C5008A7201 /* ColorPickerDelegate.swift in Sources */,
 				2298B40928A31E5500AF4AE7 /* CategoriesViewController.swift in Sources */,
