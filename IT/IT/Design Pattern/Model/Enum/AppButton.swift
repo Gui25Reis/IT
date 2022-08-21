@@ -54,6 +54,9 @@ enum AppButton: CustomStringConvertible {
     /// Símbolo - 􀋡
     case tag
     
+    /// Símbolo - 􀁡
+    case close
+    
     
     var description: String {
         switch self {
@@ -74,6 +77,7 @@ enum AppButton: CustomStringConvertible {
         case .edit: return "pencil"
         case .copyLink: return "doc.on.clipboard"
         case .tag: return "tag"
+        case .close: return "xmark.circle.fill"
         }
     }
 }

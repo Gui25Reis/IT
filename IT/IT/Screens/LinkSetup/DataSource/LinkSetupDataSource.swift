@@ -44,7 +44,7 @@ class LinkSetupDataSource: NSObject, UITableViewDataSource {
     /// Configura uma célula
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // Cria uma variácel para mexer com uma célula que foi criada
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: LinkInfoCell.identifier, for: indexPath) as? LinkInfoCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: InputInfoCell.identifier, for: indexPath) as? InputInfoCell else {
             return UITableViewCell()
         }
         

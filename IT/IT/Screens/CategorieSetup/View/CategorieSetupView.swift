@@ -3,7 +3,7 @@
 /* Bibliotecas necessárias: */
 import UIKit
 
-class LinkSetupView: UIView {
+class CategorieSetupView: UIView {
     
     /* MARK: - Atributos */
     
@@ -16,7 +16,7 @@ class LinkSetupView: UIView {
     
     private let saveButton = CustomViews.newButton()
     
-    private let linkWarningLabel = CustomViews.newLabel(alignment: .center)
+    private let stringCountlabel = CustomViews.newLabel(alignment: .right)
     
     private let tableForm: UITableView = {
         let tv = CustomViews.newTable()
@@ -32,6 +32,9 @@ class LinkSetupView: UIView {
     /// Constraints que vão mudar de acordo com o tamanho da tela
     private var dynamicConstraints: [NSLayoutConstraint] = []
     
+    /// Caracteres máximo aceitos
+    public var maxCaracteresGranted: Int = 25
+    
 
 
     /* MARK: - Construtor */
@@ -40,8 +43,7 @@ class LinkSetupView: UIView {
         super.init(frame: .zero)
         self.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.6)
         
-        self.container.backgroundColor = .systemBackground
-        
+        self.setupInitialUI()
         self.setupViews()
         self.setupConstraints()
     }
@@ -52,26 +54,15 @@ class LinkSetupView: UIView {
     
     /* MARK: - Encapsulamento */
     
-    /// Define o texto da aviso a partir da validação da URL
-    public func setUrlWarning(to warning: Bool?) -> Void {
-        if let warning = warning {
-            switch warning {
-            case true:
-                self.linkWarningLabel.text = "URL Válida"
-                self.linkWarningLabel.textColor = .green
-                
-            case false:
-                self.linkWarningLabel.text = "URL Inválida"
-                self.linkWarningLabel.textColor = .red
-            }
-        } else {
-            self.linkWarningLabel.text = ""
-        }
-    }
-    
-    
-    public func setupLinkInfo(with linkInfo: LinkInfo) -> Void {
+    /// Atualiza a quantidade de caracteres colocado
+    public func updateStringCount(to count: Int) -> Void {
+        self.stringCountlabel.text = "\(count)/\(self.maxCaracteresGranted)"
         
+        if count == self.maxCaracteresGranted {
+            self.stringCountlabel.textColor = .red
+        } else {
+            self.stringCountlabel.textColor = .label
+        }
     }
     
     
@@ -111,6 +102,17 @@ class LinkSetupView: UIView {
     }
     
     
+    /// Atrualiza a cor do botão
+    public func updateColorSelected(to color: UIColor) -> Void {
+        let index = IndexPath(row: 0, section: 0)
+        guard let cell = self.tableForm.cellForRow(at: index) as? InputInfoCell else {
+            return
+        }
+        
+        cell.updateButtonColor(to: color)
+    }
+    
+    
     
     /* MARK: - Ciclo de Vida */
     
@@ -136,19 +138,17 @@ class LinkSetupView: UIView {
         self.container.addSubview(self.cancelButton)
         self.container.addSubview(self.saveButton)
         self.container.addSubview(self.tableForm)
-        self.container.addSubview(self.linkWarningLabel)
+        self.container.addSubview(self.stringCountlabel)
     }
     
     
     /// Personalização da UI
     private func setupUI() -> Void {
-        let radius: CGFloat = self.bounds.height * 0.01
+        self.container.layer.cornerRadius = self.bounds.height * 0.01
         
-        self.container.layer.cornerRadius = radius
+        self.tableForm.layer.cornerRadius = self.bounds.height * 0.007
         
-        self.tableForm.layer.cornerRadius = radius
-        
-        self.tableForm.rowHeight = self.tableForm.bounds.height/2
+        self.tableForm.rowHeight = self.tableForm.bounds.height
         self.reloadTableData()
     }
     
@@ -166,12 +166,12 @@ class LinkSetupView: UIView {
         
         
         // Labels
-        if self.linkWarningLabel.text == nil {
-            self.linkWarningLabel.text = " "
+        if self.stringCountlabel.text == nil {
+            self.stringCountlabel.text = " "
         }
         
-        self.linkWarningLabel.setupText(with: FontConfig(
-            text: self.linkWarningLabel.text, fontSize: 15, weight: .medium)
+        self.stringCountlabel.setupText(with: FontConfig(
+            text: self.stringCountlabel.text, fontSize: self.container.bounds.height*0.1, weight: .medium)
         )
     }
     
@@ -200,15 +200,14 @@ class LinkSetupView: UIView {
             
             
             self.tableForm.topAnchor.constraint(equalTo: self.cancelButton.bottomAnchor, constant: space),
-            self.tableForm.bottomAnchor.constraint(equalTo: self.linkWarningLabel.topAnchor,constant: -space),
+            self.tableForm.bottomAnchor.constraint(equalTo: self.stringCountlabel.topAnchor, constant: -5),
             self.tableForm.leadingAnchor.constraint(equalTo: self.container.leadingAnchor, constant: space),
             self.tableForm.trailingAnchor.constraint(equalTo: self.container.trailingAnchor, constant: -space),
             
             
-            self.linkWarningLabel.centerXAnchor.constraint(equalTo: self.container.centerXAnchor),
-            self.linkWarningLabel.leadingAnchor.constraint(equalTo: self.container.leadingAnchor),
-            self.linkWarningLabel.trailingAnchor.constraint(equalTo: self.container.trailingAnchor),
-            self.linkWarningLabel.bottomAnchor.constraint(equalTo: self.container.bottomAnchor, constant: -space/2),
+            self.stringCountlabel.leadingAnchor.constraint(equalTo: self.container.leadingAnchor),
+            self.stringCountlabel.trailingAnchor.constraint(equalTo: self.tableForm.trailingAnchor),
+            self.stringCountlabel.bottomAnchor.constraint(equalTo: self.container.bottomAnchor, constant: -space),
         ])
     }
     
@@ -223,7 +222,7 @@ class LinkSetupView: UIView {
         NSLayoutConstraint.deactivate(self.dynamicConstraints)
     
         self.dynamicConstraints = [
-            self.container.heightAnchor.constraint(equalToConstant: self.bounds.height*0.18),
+            self.container.heightAnchor.constraint(equalToConstant: self.bounds.height*0.12),
             self.container.widthAnchor.constraint(equalToConstant: self.bounds.width*0.25),
             
             
@@ -234,5 +233,16 @@ class LinkSetupView: UIView {
         ]
         
         NSLayoutConstraint.activate(self.dynamicConstraints)
+    }
+    
+    
+    
+    /* MARK: - Outros */
+    
+    private func setupInitialUI() -> Void {
+        self.container.backgroundColor = .systemBackground
+        
+        self.updateStringCount(to: 0)
+        self.stringCountlabel.tintColor = .lightText
     }
 }
