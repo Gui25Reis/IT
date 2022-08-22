@@ -44,9 +44,11 @@ UIKit           | Aplicação com view code
 
 
 ## Protótipos
+As outras telas do protótipos estão disponíveis na [wiki](https://github.com/Gui25Reis/IT/wiki/Prot%C3%B3tipo---MVP).
+
 <p align="center">
-    <img width=98% src="https://github.com/Gui25Reis/IT/blob/main/Arquivos/Imagens/Prot%C3%B3tipo-01.png"/>
-    <img width=98% src="https://github.com/Gui25Reis/IT/blob/main/Arquivos/Imagens/Prot%C3%B3tipo-02.png"/>
+    <img width=98% src="https://github.com/Gui25Reis/IT/blob/main/Arquivos/Prototipos/MVP/Tela01-Menu_Principal.png"/>
+    <img width=98% src="https://github.com/Gui25Reis/IT/blob/main/Arquivos/Prototipos/MVP/Tela02-Visualizar_Documento.png"/>
 </p>
 
 
@@ -57,7 +59,7 @@ UIKit           | Aplicação com view code
 
 
 ## Documentação
-A documentação está na [wiki](https://github.com/Gui25Reis/IT/wiki) do projeto.
+A documentação do código e do projeto (diagramas UML) estão na [wiki](https://github.com/Gui25Reis/IT/wiki).
 
 
 ## Licença
