@@ -3,7 +3,8 @@
 
 /// Modelo de informações de um link
 struct LinkInfo {
-    var name: String
-    var categorie: TagConfig
+    var id: Int16
+    var title: String
     var link: String
+    var documents: [DocumentInfo]
 }

@@ -51,8 +51,8 @@ class LinkCell: UITableViewCell {
     
     /// Configura a célula
     public func setupCell(with config: LinkInfo, tag: Int) -> Void {
-        self.titleField.text = config.name
-        self.tagView.setupTag(with: config.categorie)
+        self.titleField.text = config.title
+        // self.tagView.setupTag(with: config.categorie)
         
         self.linkViewButton.tag = tag
         self.optionsButton.tag = tag

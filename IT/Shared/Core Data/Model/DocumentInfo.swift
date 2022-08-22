@@ -2,7 +2,8 @@
 
 
 /// Modelo de informações de um documento
-struct Document {
+struct DocumentInfo {
+    var id: Int16
     var group: String
     var categories: [TagConfig]
     var title: String

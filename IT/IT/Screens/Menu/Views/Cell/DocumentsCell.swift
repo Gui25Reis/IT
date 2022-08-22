@@ -66,7 +66,7 @@ class DocumentsCell: UICollectionViewCell {
     /* MARK: - Encapsulamento */
     
     /// Configurando a célula a partir das informações do documento
-    public func setupCell(with document: Document) -> Void {
+    public func setupCell(with document: DocumentInfo) -> Void {
         self.titleLabel.text = document.title
         
         self.favoriteButton.isHidden = !document.isFavorited

@@ -6,9 +6,11 @@ import UIKit
 class DocumentsDataSource: NSObject, UICollectionViewDataSource {
     
     /* MARK: - Atributos */
-    public var documents: [Document] = []
+    
+    public var documents: [DocumentInfo] = []
     
     private var dataSources: [Int: DocumentTagsDataSource] = [:]
+    
     
     
     /* MARK: - Construtor */
@@ -16,7 +18,8 @@ class DocumentsDataSource: NSObject, UICollectionViewDataSource {
     override init() {
         super.init()
         
-        var document = Document(
+        var document = DocumentInfo(
+            id: 0,
             group: "Teste",
             categories: [
                 TagConfig(text: "Teste", color: .tertiaryLabel),
@@ -26,12 +29,14 @@ class DocumentsDataSource: NSObject, UICollectionViewDataSource {
             title: "Título do documento nº !!!!",
             links: [
                 LinkInfo(
-                    name: "Esconder scroll", categorie: TagConfig(text: "", color: nil),
-                    link: "https://kings-gui.notion.site/Como-esconder-a-barra-de-rolagem-scroll-bar-da-Collection-ecfe3bc7538a482c8a052f2d0e35c6e6"
+                    id: 10, title: "Esconder scroll",
+                    link: "https://kings-gui.notion.site/Como-esconder-a-barra-de-rolagem-scroll-bar-da-Collection-ecfe3bc7538a482c8a052f2d0e35c6e6",
+                    documents: []
                 ),
-                LinkInfo(
-                    name: "Padrão de comentários", categorie: TagConfig(text: "", color: nil),
-                    link: "https://kings-gui.notion.site/Padroniza-o-do-c-digo-cf5fd2bdeee448da892c462bd02fc572"
+                LinkInfo (
+                    id: 11, title: "Padrão de comentários",
+                    link: "https://kings-gui.notion.site/Padroniza-o-do-c-digo-cf5fd2bdeee448da892c462bd02fc572",
+                    documents: []
                 )
             ],
             isFavorited: false

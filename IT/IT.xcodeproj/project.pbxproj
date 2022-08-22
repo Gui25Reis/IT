@@ -12,7 +12,7 @@
 		220612CB28926A9C0088B646 /* InputInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220612CA28926A9C0088B646 /* InputInfoCell.swift */; };
 		220612CD28926BCC0088B646 /* LinkSetupDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220612CC28926BCC0088B646 /* LinkSetupDataSource.swift */; };
 		220AAC2128A0DF8D00303C14 /* CopyWarning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220AAC2028A0DF8D00303C14 /* CopyWarning.swift */; };
-		220D86BB287778D800F63E73 /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220D86BA287778D800F63E73 /* Document.swift */; };
+		220D86BB287778D800F63E73 /* DocumentInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220D86BA287778D800F63E73 /* DocumentInfo.swift */; };
 		220D86C12878159900F63E73 /* DocumentsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220D86C02878159900F63E73 /* DocumentsDelegate.swift */; };
 		220D86C4287815E100F63E73 /* DocumentsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220D86C3287815E100F63E73 /* DocumentsDataSource.swift */; };
 		220F95A82878C00F00A1D30F /* GroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220F95A72878C00F00A1D30F /* GroupView.swift */; };
@@ -29,11 +29,26 @@
 		2225C4A12887B5FA0028C376 /* DocumentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2225C4A02887B5FA0028C376 /* DocumentViewController.swift */; };
 		2225C4A32887B62A0028C376 /* DocumentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2225C4A22887B62A0028C376 /* DocumentView.swift */; };
 		2225C4A52887D01F0028C376 /* LinkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2225C4A42887D01F0028C376 /* LinkCell.swift */; };
-		2225C4A72887E60F0028C376 /* LinkInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2225C4A62887E60F0028C376 /* LinkInfo.swift */; };
 		2225C4A92887E9FC0028C376 /* LinksDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2225C4A82887E9FC0028C376 /* LinksDataSource.swift */; };
 		2225C4AB2887F3970028C376 /* LinksDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2225C4AA2887F3970028C376 /* LinksDelegate.swift */; };
 		2232980C28AAF9180057E674 /* CategorieSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2232980B28AAF9180057E674 /* CategorieSetupViewController.swift */; };
 		2232980E28AAF9530057E674 /* CategorieSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2232980D28AAF9530057E674 /* CategorieSetupView.swift */; };
+		223723D128B20FA400051529 /* DocumentCDManeger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223723D028B20FA400051529 /* DocumentCDManeger.swift */; };
+		223723D328B2104900051529 /* CoreDataInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223723D228B2104900051529 /* CoreDataInfo.swift */; };
+		223723D628B2896400051529 /* GroupCDManeger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223723D528B2896400051529 /* GroupCDManeger.swift */; };
+		223723D828B28B6B00051529 /* GroupInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223723D728B28B6B00051529 /* GroupInfo.swift */; };
+		223723DA28B28BFD00051529 /* CategoryInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223723D928B28BFD00051529 /* CategoryInfo.swift */; };
+		223723DC28B28C4600051529 /* LinkInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223723DB28B28C4600051529 /* LinkInfo.swift */; };
+		223723E028B348CE00051529 /* CategoryCDManeger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223723DF28B348CE00051529 /* CategoryCDManeger.swift */; };
+		223723E228B34AAA00051529 /* LinkCDManeger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223723E128B34AAA00051529 /* LinkCDManeger.swift */; };
+		223723E428B34B8900051529 /* DocumentCategoryRelationship.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223723E328B34B8900051529 /* DocumentCategoryRelationship.swift */; };
+		223723E728B34E4300051529 /* DocCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223723E628B34E4300051529 /* DocCategory.swift */; };
+		223723E928B34E9A00051529 /* DocGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223723E828B34E9A00051529 /* DocGroup.swift */; };
+		223723EB28B34EBC00051529 /* DocLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223723EA28B34EBC00051529 /* DocLink.swift */; };
+		223723ED28B3507500051529 /* DocumentGroupRelationship.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223723EC28B3507500051529 /* DocumentGroupRelationship.swift */; };
+		223723EF28B351C000051529 /* DocumentLinkRelationship.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223723EE28B351C000051529 /* DocumentLinkRelationship.swift */; };
+		223723F328B3537600051529 /* UserDefaultsKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223723F228B3537600051529 /* UserDefaultsKeys.swift */; };
+		223723F528B3546F00051529 /* UserDefaults+UserDefaultsKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223723F428B3546F00051529 /* UserDefaults+UserDefaultsKeys.swift */; };
 		223EB48E2876F2EF006BD32F /* DocumentsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223EB48D2876F2EF006BD32F /* DocumentsCell.swift */; };
 		223EB4902876F3D2006BD32F /* TagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223EB48F2876F3D2006BD32F /* TagView.swift */; };
 		223EB4932876F480006BD32F /* TagConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223EB4922876F480006BD32F /* TagConfig.swift */; };
@@ -74,7 +89,7 @@
 		220612CA28926A9C0088B646 /* InputInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputInfoCell.swift; sourceTree = "<group>"; };
 		220612CC28926BCC0088B646 /* LinkSetupDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkSetupDataSource.swift; sourceTree = "<group>"; };
 		220AAC2028A0DF8D00303C14 /* CopyWarning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyWarning.swift; sourceTree = "<group>"; };
-		220D86BA287778D800F63E73 /* Document.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
+		220D86BA287778D800F63E73 /* DocumentInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentInfo.swift; sourceTree = "<group>"; };
 		220D86C02878159900F63E73 /* DocumentsDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentsDelegate.swift; sourceTree = "<group>"; };
 		220D86C3287815E100F63E73 /* DocumentsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentsDataSource.swift; sourceTree = "<group>"; };
 		220F95A72878C00F00A1D30F /* GroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupView.swift; sourceTree = "<group>"; };
@@ -91,11 +106,26 @@
 		2225C4A02887B5FA0028C376 /* DocumentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentViewController.swift; sourceTree = "<group>"; };
 		2225C4A22887B62A0028C376 /* DocumentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentView.swift; sourceTree = "<group>"; };
 		2225C4A42887D01F0028C376 /* LinkCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkCell.swift; sourceTree = "<group>"; };
-		2225C4A62887E60F0028C376 /* LinkInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkInfo.swift; sourceTree = "<group>"; };
 		2225C4A82887E9FC0028C376 /* LinksDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinksDataSource.swift; sourceTree = "<group>"; };
 		2225C4AA2887F3970028C376 /* LinksDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinksDelegate.swift; sourceTree = "<group>"; };
 		2232980B28AAF9180057E674 /* CategorieSetupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorieSetupViewController.swift; sourceTree = "<group>"; };
 		2232980D28AAF9530057E674 /* CategorieSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorieSetupView.swift; sourceTree = "<group>"; };
+		223723D028B20FA400051529 /* DocumentCDManeger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentCDManeger.swift; sourceTree = "<group>"; };
+		223723D228B2104900051529 /* CoreDataInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataInfo.swift; sourceTree = "<group>"; };
+		223723D528B2896400051529 /* GroupCDManeger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCDManeger.swift; sourceTree = "<group>"; };
+		223723D728B28B6B00051529 /* GroupInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupInfo.swift; sourceTree = "<group>"; };
+		223723D928B28BFD00051529 /* CategoryInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryInfo.swift; sourceTree = "<group>"; };
+		223723DB28B28C4600051529 /* LinkInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkInfo.swift; sourceTree = "<group>"; };
+		223723DF28B348CE00051529 /* CategoryCDManeger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCDManeger.swift; sourceTree = "<group>"; };
+		223723E128B34AAA00051529 /* LinkCDManeger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkCDManeger.swift; sourceTree = "<group>"; };
+		223723E328B34B8900051529 /* DocumentCategoryRelationship.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentCategoryRelationship.swift; sourceTree = "<group>"; };
+		223723E628B34E4300051529 /* DocCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocCategory.swift; sourceTree = "<group>"; };
+		223723E828B34E9A00051529 /* DocGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocGroup.swift; sourceTree = "<group>"; };
+		223723EA28B34EBC00051529 /* DocLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocLink.swift; sourceTree = "<group>"; };
+		223723EC28B3507500051529 /* DocumentGroupRelationship.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentGroupRelationship.swift; sourceTree = "<group>"; };
+		223723EE28B351C000051529 /* DocumentLinkRelationship.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentLinkRelationship.swift; sourceTree = "<group>"; };
+		223723F228B3537600051529 /* UserDefaultsKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsKeys.swift; sourceTree = "<group>"; };
+		223723F428B3546F00051529 /* UserDefaults+UserDefaultsKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+UserDefaultsKeys.swift"; sourceTree = "<group>"; };
 		223EB48D2876F2EF006BD32F /* DocumentsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentsCell.swift; sourceTree = "<group>"; };
 		223EB48F2876F3D2006BD32F /* TagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagView.swift; sourceTree = "<group>"; };
 		223EB4922876F480006BD32F /* TagConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagConfig.swift; sourceTree = "<group>"; };
@@ -372,13 +402,72 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		223723D428B213A500051529 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				223723E528B34E2000051529 /* Releations */,
+				220D86BA287778D800F63E73 /* DocumentInfo.swift */,
+				223723D728B28B6B00051529 /* GroupInfo.swift */,
+				223723D928B28BFD00051529 /* CategoryInfo.swift */,
+				223723DB28B28C4600051529 /* LinkInfo.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		223723DD28B3485E00051529 /* Entities Manegar */ = {
+			isa = PBXGroup;
+			children = (
+				223723D028B20FA400051529 /* DocumentCDManeger.swift */,
+				223723D528B2896400051529 /* GroupCDManeger.swift */,
+				223723DF28B348CE00051529 /* CategoryCDManeger.swift */,
+				223723E128B34AAA00051529 /* LinkCDManeger.swift */,
+			);
+			path = "Entities Manegar";
+			sourceTree = "<group>";
+		};
+		223723DE28B3486D00051529 /* Relationship Maneger */ = {
+			isa = PBXGroup;
+			children = (
+				223723E328B34B8900051529 /* DocumentCategoryRelationship.swift */,
+				223723EC28B3507500051529 /* DocumentGroupRelationship.swift */,
+				223723EE28B351C000051529 /* DocumentLinkRelationship.swift */,
+			);
+			path = "Relationship Maneger";
+			sourceTree = "<group>";
+		};
+		223723E528B34E2000051529 /* Releations */ = {
+			isa = PBXGroup;
+			children = (
+				223723E628B34E4300051529 /* DocCategory.swift */,
+				223723E828B34E9A00051529 /* DocGroup.swift */,
+				223723EA28B34EBC00051529 /* DocLink.swift */,
+			);
+			path = Releations;
+			sourceTree = "<group>";
+		};
+		223723F028B3535100051529 /* User Defaults */ = {
+			isa = PBXGroup;
+			children = (
+				223723F128B3536600051529 /* Extension */,
+				223723F228B3537600051529 /* UserDefaultsKeys.swift */,
+			);
+			path = "User Defaults";
+			sourceTree = "<group>";
+		};
+		223723F128B3536600051529 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				223723F428B3546F00051529 /* UserDefaults+UserDefaultsKeys.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		223EB4912876F469006BD32F /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				22673DEC28AAFD7500BEFC79 /* Ui Style */,
 				223EB4922876F480006BD32F /* TagConfig.swift */,
-				220D86BA287778D800F63E73 /* Document.swift */,
-				2225C4A62887E60F0028C376 /* LinkInfo.swift */,
+				223723D228B2104900051529 /* CoreDataInfo.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -542,8 +631,8 @@
 		22B7655F2876301800BE6ED1 /* IT */ = {
 			isa = PBXGroup;
 			children = (
-				224CA0AC28AF1363001B9DBF /* Extensions */,
 				22B765832876360600BE6ED1 /* IT.entitlements */,
+				224CA0AC28AF1363001B9DBF /* Extensions */,
 				22B765822876337F00BE6ED1 /* Design Pattern */,
 				220D86B52877765100F63E73 /* Protocol */,
 				22B765772876302500BE6ED1 /* Delegate */,
@@ -621,6 +710,7 @@
 			children = (
 				22B765812876333300BE6ED1 /* Assets */,
 				22B765802876332A00BE6ED1 /* Core Data */,
+				223723F028B3535100051529 /* User Defaults */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -629,6 +719,9 @@
 			isa = PBXGroup;
 			children = (
 				22B765692876301800BE6ED1 /* IT.xcdatamodeld */,
+				223723D428B213A500051529 /* Model */,
+				223723DD28B3485E00051529 /* Entities Manegar */,
+				223723DE28B3486D00051529 /* Relationship Maneger */,
 			);
 			path = "Core Data";
 			sourceTree = "<group>";
@@ -764,14 +857,16 @@
 			files = (
 				220F95C4287CBEC400A1D30F /* EditGroupDataSource.swift in Sources */,
 				220AAC2128A0DF8D00303C14 /* CopyWarning.swift in Sources */,
+				223723E228B34AAA00051529 /* LinkCDManeger.swift in Sources */,
 				22673DF528AB0DD600BEFC79 /* CategorieSetupViewControllerDelegate.swift in Sources */,
 				22B7658C28763AA700BE6ED1 /* FontConfig.swift in Sources */,
 				220F95AF287BEF2600A1D30F /* DocumentTagsDataSource.swift in Sources */,
 				22B7657D2876317100BE6ED1 /* MenuView.swift in Sources */,
 				2225C4A12887B5FA0028C376 /* DocumentViewController.swift in Sources */,
-				2225C4A72887E60F0028C376 /* LinkInfo.swift in Sources */,
+				223723EB28B34EBC00051529 /* DocLink.swift in Sources */,
 				2225C4A92887E9FC0028C376 /* LinksDataSource.swift in Sources */,
 				22673DF228AAFE8200BEFC79 /* EditInfoStyle.swift in Sources */,
+				223723F528B3546F00051529 /* UserDefaults+UserDefaultsKeys.swift in Sources */,
 				22B7656B2876301800BE6ED1 /* IT.xcdatamodeld in Sources */,
 				220F95C6287D1CEC00A1D30F /* EditGroupDelegate.swift in Sources */,
 				2225C4A32887B62A0028C376 /* DocumentView.swift in Sources */,
@@ -779,14 +874,19 @@
 				22B7658E28763DA600BE6ED1 /* IconConfig.swift in Sources */,
 				223EB4972876F7C9006BD32F /* TagCell.swift in Sources */,
 				2298B40B28A31EBC00AF4AE7 /* CategorieView.swift in Sources */,
+				223723D828B28B6B00051529 /* GroupInfo.swift in Sources */,
+				223723D328B2104900051529 /* CoreDataInfo.swift in Sources */,
 				220F95AA2878C44600A1D30F /* GroupDataSource.swift in Sources */,
 				22B765652876301800BE6ED1 /* MenuViewController.swift in Sources */,
 				22B76585287639F000BE6ED1 /* AppButton.swift in Sources */,
+				223723F328B3537600051529 /* UserDefaultsKeys.swift in Sources */,
 				22B765612876301800BE6ED1 /* AppDelegate.swift in Sources */,
 				22B7659228766DBF00BE6ED1 /* UILabel+FontConfig.swift in Sources */,
 				22A800822894BDC900BA564F /* LinkSetupViewControllerDelegate.swift in Sources */,
+				223723ED28B3507500051529 /* DocumentGroupRelationship.swift in Sources */,
 				2298B40E28A325A400AF4AE7 /* CategorieViewType.swift in Sources */,
 				22B7658928763A5C00BE6ED1 /* UIButton+IconConfig.swift in Sources */,
+				223723E028B348CE00051529 /* CategoryCDManeger.swift in Sources */,
 				223EB4932876F480006BD32F /* TagConfig.swift in Sources */,
 				22A60A762893BDB300A3727A /* DocumentViewControllerDelegate.swift in Sources */,
 				224CA0B028AF1518001B9DBF /* ColorInfo.swift in Sources */,
@@ -795,14 +895,21 @@
 				223EB4902876F3D2006BD32F /* TagView.swift in Sources */,
 				220F95BB287C320700A1D30F /* EditGroupView.swift in Sources */,
 				220F95AC2878C84000A1D30F /* GroupDelegate.swift in Sources */,
+				223723DA28B28BFD00051529 /* CategoryInfo.swift in Sources */,
+				223723D628B2896400051529 /* GroupCDManeger.swift in Sources */,
+				223723E728B34E4300051529 /* DocCategory.swift in Sources */,
 				220612C92892604C0088B646 /* LinkSetupView.swift in Sources */,
+				223723E928B34E9A00051529 /* DocGroup.swift in Sources */,
 				2232980E28AAF9530057E674 /* CategorieSetupView.swift in Sources */,
 				226A327828AC5FCE008A7201 /* TextFieldDelegate.swift in Sources */,
 				2225C4AB2887F3970028C376 /* LinksDelegate.swift in Sources */,
+				223723EF28B351C000051529 /* DocumentLinkRelationship.swift in Sources */,
+				223723DC28B28C4600051529 /* LinkInfo.swift in Sources */,
 				224CA0AE28AF137D001B9DBF /* UIColor+getColorInfo.swift in Sources */,
 				220D86C4287815E100F63E73 /* DocumentsDataSource.swift in Sources */,
 				226A327628AC56C5008A7201 /* ColorPickerDelegate.swift in Sources */,
 				2298B40928A31E5500AF4AE7 /* CategoriesViewController.swift in Sources */,
+				223723D128B20FA400051529 /* DocumentCDManeger.swift in Sources */,
 				220612CB28926A9C0088B646 /* InputInfoCell.swift in Sources */,
 				22B7659428766E4B00BE6ED1 /* CustomViews.swift in Sources */,
 				22B7659028763E3800BE6ED1 /* UIButton+FontConfig.swift in Sources */,
@@ -811,9 +918,10 @@
 				220612CD28926BCC0088B646 /* LinkSetupDataSource.swift in Sources */,
 				2298B41028A33F1100AF4AE7 /* TagStyle.swift in Sources */,
 				22B765632876301800BE6ED1 /* SceneDelegate.swift in Sources */,
+				223723E428B34B8900051529 /* DocumentCategoryRelationship.swift in Sources */,
 				220F95B2287C043300A1D30F /* MenuViewControllerDelegate.swift in Sources */,
 				220612C22892601A0088B646 /* LinkSetupViewController.swift in Sources */,
-				220D86BB287778D800F63E73 /* Document.swift in Sources */,
+				220D86BB287778D800F63E73 /* DocumentInfo.swift in Sources */,
 				220F95A82878C00F00A1D30F /* GroupView.swift in Sources */,
 				2225C4A52887D01F0028C376 /* LinkCell.swift in Sources */,
 				220D86C12878159900F63E73 /* DocumentsDelegate.swift in Sources */,

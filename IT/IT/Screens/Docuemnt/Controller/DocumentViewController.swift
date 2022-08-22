@@ -10,7 +10,7 @@ class DocumentViewController: UIViewController, DocumentControllerDelegate {
     private let myView = DocumentView()
     
     /// Modal com as informaçòes do documento da página
-    private var document: Document?
+    private var document: DocumentInfo?
     
     /// Index do link que está a mostra
     private var linkPreview: Int = 0
@@ -32,7 +32,7 @@ class DocumentViewController: UIViewController, DocumentControllerDelegate {
     
     /* MARK: - Construtor */
     
-    init(with document: Document?) {
+    init(with document: DocumentInfo?) {
         super.init(nibName: nil, bundle: nil)
         
         if let document = document {
@@ -100,7 +100,7 @@ class DocumentViewController: UIViewController, DocumentControllerDelegate {
             let clipboardText = """
             Se liga nesse link que eu salvei:
             
-            >> \(document.links[index].name)
+            >> \(document.links[index].title)
             \(document.links[index].link)
             """
             
@@ -250,7 +250,7 @@ class DocumentViewController: UIViewController, DocumentControllerDelegate {
             
             for link in document.links {
                 clipboardText += """
-                > \(link.name)
+                > \(link.title)
                 \(link.link)\n\n
                 """
             }

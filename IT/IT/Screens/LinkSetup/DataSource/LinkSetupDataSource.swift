@@ -51,7 +51,7 @@ class LinkSetupDataSource: NSObject, UITableViewDataSource {
         
         if indexPath.row == 0 {
             cell.setBackgroundText(with: "Nome")
-            if let name = self.linkInfo?.name {
+            if let name = self.linkInfo?.title {
                 cell.setupCell(with: name, tag: 0)
             }
 
