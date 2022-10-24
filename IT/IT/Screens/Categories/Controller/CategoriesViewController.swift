@@ -3,7 +3,107 @@
 /* Bibliotecas necessárias: */
 import UIKit
 
-class CategoriesViewController: UIViewController {
+
+class AllCategoriesDataSource: NSObject, UICollectionViewDataSource, UICollectionViewDelegate {
+    
+    
+    static var data = [
+        TagConfig(text: "Código", color: .tertiaryLabel),
+        TagConfig(text: "Documentação", color: .tertiaryLabel),
+        TagConfig(text: "Teoria", color: .tertiaryLabel),
+    ]
+    
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return Self.data.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TagCell.identifier, for: indexPath) as? TagCell else {
+            return UICollectionViewCell()
+        }
+        
+        let data = Self.data[indexPath.row]
+        cell.setupTag(with: data)
+        
+        return cell
+    }
+    
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let row = indexPath.row
+        let data = Self.data[row]
+        SelectedCategoriesDataSource.data.append(data)
+        
+        Self.data.remove(at: row)
+        
+        self.controllerProtocol?.reloadCollectionData()
+    }
+    
+    
+    weak var controllerProtocol: CategoriesProtocol?
+}
+
+
+
+
+class SelectedCategoriesDataSource: NSObject, UICollectionViewDataSource, UICollectionViewDelegate {
+    
+    static var data: [TagConfig] = [] {
+        didSet {
+            DocumentTagsOKDataSource.tags = Self.data
+        }
+    }
+    
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return Self.data.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TagCell.identifier, for: indexPath) as? TagCell else {
+            return UICollectionViewCell()
+        }
+        
+        let data = Self.data[indexPath.row]
+        cell.setupTag(with: data)
+        
+        return cell
+    }
+    
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let row = indexPath.row
+        let data = Self.data[row]
+        AllCategoriesDataSource.data.append(data)
+        
+        Self.data.remove(at: row)
+        
+        self.controllerProtocol?.reloadCollectionData()
+    }
+    
+    
+    weak var controllerProtocol: CategoriesProtocol?
+}
+
+
+
+protocol CategoriesProtocol: NSObject {
+    
+    func reloadCollectionData()
+}
+
+
+class CategoriesViewController: UIViewController, CategoriesProtocol {
+        
+    func reloadCollectionData() {
+        self.myView.reloadCollectionData()
+    }
+    
+    private let allCategoriesManager = AllCategoriesDataSource()
+    
+    private let selectedCategoriesManager = SelectedCategoriesDataSource()
+    
     
     /* MARK: - Atributos */
     
@@ -37,6 +137,14 @@ class CategoriesViewController: UIViewController {
         super.viewDidLoad()
         
         self.setupButtonsAction()
+        
+        self.allCategoriesManager.controllerProtocol = self
+        self.selectedCategoriesManager.controllerProtocol = self
+        self.myView.allCategoriesCollection.dataSource = self.allCategoriesManager
+        self.myView.allCategoriesCollection.delegate = self.allCategoriesManager
+        
+        self.myView.selectedCategoriesCollection.dataSource = self.selectedCategoriesManager
+        self.myView.selectedCategoriesCollection.delegate = self.selectedCategoriesManager
     }
     
     

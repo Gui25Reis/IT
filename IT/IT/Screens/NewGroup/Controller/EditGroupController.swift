@@ -121,6 +121,8 @@ class EditGroupController: UIViewController, EditGroupDelegate {
         EditGroupController.groups.append(newTag)
         
         self.myView.reloadTableData()
+        
+        MocData.allDocuments[1] = []
     }
     
     

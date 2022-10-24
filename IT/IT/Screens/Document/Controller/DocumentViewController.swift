@@ -3,7 +3,23 @@
 /* Bibliotecas necessárias: */
 import UIKit
 
-class DocumentViewController: UIViewController, DocumentControllerDelegate {
+
+protocol DocumentProtocol: NSObject {
+    func reloadColletionData()
+    
+    func reloadTableData()
+}
+
+class DocumentViewController: UIViewController, DocumentControllerDelegate, DocumentProtocol {
+    
+    func reloadColletionData() {
+        self.myView.reloadCollectionData()
+    }
+    
+    func reloadTableData() {
+        self.myView.reloadTableData()
+    }
+    
     
     /* MARK: - Atributos */
     
@@ -19,14 +35,14 @@ class DocumentViewController: UIViewController, DocumentControllerDelegate {
     /* Delegates & Data Sources*/
     
     /// Data Source da collection de categorias
-    private var tagsDataSource: DocumentTagsDataSource?
+    private var tagsDataSource = DocumentTagsOKDataSource(tags: [])
     
     
     /// Delegate da tabel de links
     private let linksDelegate = LinksDelegate()
     
     /// Data Source da tabela de links
-    private var linksDataSource: LinksDataSource?
+    private var linksDataSource = LinksDataSource(links: [])
     
      
     
@@ -37,6 +53,8 @@ class DocumentViewController: UIViewController, DocumentControllerDelegate {
         
         if let document = document {
             self.document = document
+        } else {
+            LinksDataSource.links = []
         }
     }
     
@@ -60,8 +78,14 @@ class DocumentViewController: UIViewController, DocumentControllerDelegate {
         self.setupDocumentInfo()
         self.setupButtonsAction()
         self.setupDelegates()
+        
+        DocumentTagsOKDataSource.documentProtocol = self
+        LinksDataSource.delegate2 = self
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.reloadTableData()
+    }
     
     
     /* MARK: - Delegate (Protocol) */
@@ -83,6 +107,12 @@ class DocumentViewController: UIViewController, DocumentControllerDelegate {
     internal func openLinkOnWebView(for index: Int) -> Void {
         if let document = self.document {
             let _ = self.myView.setUrl(with: document.links[index].link)
+            
+            self.linkPreview = index
+            self.myView.reloadTableData()
+        } else {
+            print("Oi")
+            let _ = self.myView.setUrl(with: LinksDataSource.links[index].link)
             
             self.linkPreview = index
             self.myView.reloadTableData()
@@ -133,6 +163,16 @@ class DocumentViewController: UIViewController, DocumentControllerDelegate {
     
     /// Ação do botão de fechar a página
     @objc private func closeAction() -> Void {
+        if LinksDataSource.links.count == 1 {
+            MocData.allDocuments[1] = [DocumentInfo(
+                id: 0,
+                group: "",
+                categories: SelectedCategoriesDataSource.data,
+                title: self.myView.getDocumentTitle(),
+                links: LinksDataSource.links,
+                isFavorited: false
+            )]
+        }
         self.dismiss(animated: false)
     }
     
@@ -179,17 +219,17 @@ class DocumentViewController: UIViewController, DocumentControllerDelegate {
     /// Configura os delegates e Data Sources das views
     private func setupDelegates() -> Void {
         // Collection -> Tags
-        if let tagsDataSource = self.tagsDataSource {
-            self.myView.setTagCollectionDataSource(with: tagsDataSource)
-        }
+//        if let tagsDataSource = self.tagsDataSource {
+            self.myView.setTagCollectionDataSource(with: self.tagsDataSource)
+//        }
         
         // Table -> Links
         self.linksDelegate.setDelegate(with: self)
         self.myView.setLinksTableDelegate(with: self.linksDelegate)
         
-        if let linksDataSource = self.linksDataSource {
+//        if let linksDataSource = self.linksDataSource {
             self.myView.setLinksTableDataSource(with: linksDataSource)
-        }
+//        }
         
         // Atualizando dados
         self.myView.reloadCollectionData()
@@ -216,7 +256,7 @@ class DocumentViewController: UIViewController, DocumentControllerDelegate {
         if let document = self.document {
             self.myView.setDocumentTitle(with: document.title)
             
-            self.tagsDataSource = DocumentTagsDataSource(tags: document.categories)
+            self.tagsDataSource = DocumentTagsOKDataSource(tags: document.categories)
             
             let linksDataSource = LinksDataSource(links: document.links)
             linksDataSource.setDelegate(with: self)
@@ -230,6 +270,8 @@ class DocumentViewController: UIViewController, DocumentControllerDelegate {
         } else {
             self.myView.setupNewDocument()
         }
+        
+        self.linksDataSource.setDelegate(with: self)
     }
     
     

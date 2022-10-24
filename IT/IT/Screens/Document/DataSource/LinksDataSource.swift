@@ -7,8 +7,16 @@ class LinksDataSource: NSObject, UITableViewDataSource {
     
     /* MARK: - Atributos */
     
+    static weak var delegate2: DocumentProtocol?
+    
     /// Lista de tags que vão ser mostradas no documento
-    private var links: [LinkInfo] = []
+    static var links: [LinkInfo] = [] {
+        didSet {
+            print(Self.links.count)
+            Self.delegate2?.reloadTableData()
+            print(Self.links.count)
+        }
+    }
     
     
     /// Lista de tags que vão ser mostradas no documento
@@ -21,7 +29,9 @@ class LinksDataSource: NSObject, UITableViewDataSource {
     init(links: [LinkInfo]) {
         super.init()
         
-        self.links = links
+        if !links.isEmpty {
+            Self.links = links
+        }
     }
     
     
@@ -38,19 +48,22 @@ class LinksDataSource: NSObject, UITableViewDataSource {
     
     /// Define quantas células vão ser mostradas
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.links.count
+        print("entrei aqui")
+        return Self.links.count
     }
     
     
     /// Configura uma célula
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // Cria uma variácel para mexer com uma célula que foi criada
+        
+        print("oooooiiiii")
         guard let cell = tableView.dequeueReusableCell(withIdentifier: LinkCell.identifier, for: indexPath) as? LinkCell else {
             return UITableViewCell()
         }
         
         // Configura a célula
-        let link = self.links[indexPath.row]
+        let link = Self.links[indexPath.row]
         cell.setupCell(with: link, tag: indexPath.row)
         cell.tag = indexPath.row
         
@@ -110,6 +123,7 @@ class LinksDataSource: NSObject, UITableViewDataSource {
     
     /// Define o link que vai ser mostrado no web preview
     @objc func showLinkPreviewAction(sender: UIButton) -> Void {
+        print("Entre na função com \(sender.tag)")
         self.delegate?.openLinkOnWebView(for: sender.tag)
     }
     
@@ -137,4 +151,71 @@ class LinksDataSource: NSObject, UITableViewDataSource {
     @objc func deleteLinkAction(sender: UIView) -> Void {
         self.delegate?.deleteLink(for: sender.tag)
     }
+}
+
+
+
+/* Gui Reis     -    gui.sreis25@gmail.com */
+
+/* Bibliotecas necessárias: */
+
+
+class DocumentTagsOKDataSource: NSObject, UICollectionViewDataSource {
+    
+    static weak var documentProtocol: DocumentProtocol?
+    
+    /* MARK: - Atributos */
+    
+    /// Lista de tags que vão ser mostradas no documento
+    static var tags: [TagConfig] = [] {
+        didSet {
+            Self.documentProtocol?.reloadColletionData()
+        }
+    }
+    
+    
+    
+    /* MARK: - Construtor */
+    
+    init(tags: [TagConfig]) {
+        super.init()
+        
+        Self.tags = tags
+    }
+    
+    
+    
+    /* MARK: - Data Sources */
+    
+    /// Mostra quantas células vão ser mostradas
+    public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return Self.tags.count
+    }
+    
+    
+    /// Configura uma célula
+    public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        // Cria uma variácel para mexer com uma célula que foi criada
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TagCell.identifier, for: indexPath) as? TagCell else {
+            return UICollectionViewCell()
+        }
+        // Configura a célula
+        let tag = Self.tags[indexPath.row]
+        cell.setupTag(with: tag)
+        
+        // Desativa a seleção
+        cell.allowSelection = false
+        
+        // Borda arredondada
+        cell.layer.cornerRadius = collectionView.bounds.height * 0.15
+        return cell
+        
+    }
+    
+    
+    /* MARK: - Ações de Botões */
+    
+    /// Ação para deletar uma linha da tabela
+    
+    
 }

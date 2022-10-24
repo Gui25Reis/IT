@@ -68,6 +68,7 @@ class LinkSetupViewController: UIViewController, LinkSetupViewControllerDelegate
                 }
             }
         }
+        validate = true
         self.myView.setUrlWarning(to: validate)
     }
     
@@ -80,13 +81,19 @@ class LinkSetupViewController: UIViewController, LinkSetupViewControllerDelegate
     }
     
     
+    @objc private func saveAction() -> Void {
+        LinksDataSource.links = [LinkInfo(id: 0, title: "Cronograma", link: "https://kings-gui.notion.site/Cronograma-IT-99f8bf69e7124a37b37dec0b1d678194", documents: [])]
+        self.dismiss(animated: false)
+    }
+    
+    
     
     /* MARK: - Configurações */
     
     /// Definindo as ações dos botões
     private func setupButtonAction() -> Void {
         self.myView.setCancelAction(target: self, action: #selector(self.cancelAction))
-        self.myView.setSaveAction(target: self, action: #selector(self.cancelAction))
+        self.myView.setSaveAction(target: self, action: #selector(self.saveAction))
     }
     
     

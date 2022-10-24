@@ -17,7 +17,7 @@ class DocumentView: UIView {
     
     private let deleteButton = CustomViews.newButton()
     
-    private let titleField = CustomViews.newTextField()
+    public let titleField = CustomViews.newTextField()
     
     private let webView = CustomViews.newWebView()
     
@@ -110,6 +110,11 @@ class DocumentView: UIView {
     }
     
     
+    public func getDocumentTitle() -> String {
+        return self.titleField.text ?? ""
+    }
+    
+    
     /// Mostra com animação o aviso de texto copiado
     public func showCopyWarning() -> Void {
         // Mostra a view
@@ -186,7 +191,7 @@ class DocumentView: UIView {
     /* Collection */
     
     /// Define qual vai ser o Data Source da collection
-    public func setTagCollectionDataSource(with dataSource: DocumentTagsDataSource) -> Void {
+    public func setTagCollectionDataSource(with dataSource: DocumentTagsOKDataSource) -> Void {
         self.tagCollection.dataSource = dataSource
     }
     

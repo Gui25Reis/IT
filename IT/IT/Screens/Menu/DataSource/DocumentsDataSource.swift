@@ -3,6 +3,15 @@
 /* Bibliotecas necessárias: */
 import UIKit
 
+
+class MocData {
+    
+    static var allDocuments: [Int:[DocumentInfo]] = [:]
+    
+    static var favDocuments: [DocumentInfo] = []
+}
+
+
 class DocumentsDataSource: NSObject, UICollectionViewDataSource {
     
     /* MARK: - Atributos */
@@ -20,13 +29,12 @@ class DocumentsDataSource: NSObject, UICollectionViewDataSource {
         
         var document = DocumentInfo(
             id: 0,
-            group: "Teste",
+            group: "",
             categories: [
-                TagConfig(text: "Teste", color: .tertiaryLabel),
-                TagConfig(text: "Teste", color: .tertiaryLabel),
-                TagConfig(text: "Teste", color: .tertiaryLabel)
+                TagConfig(text: "Código", color: .tertiaryLabel),
+                TagConfig(text: "Documentação", color: .tertiaryLabel)
             ],
-            title: "Título do documento nº !!!!",
+            title: "Aula de scroll",
             links: [
                 LinkInfo(
                     id: 10, title: "Esconder scroll",
@@ -42,11 +50,11 @@ class DocumentsDataSource: NSObject, UICollectionViewDataSource {
             isFavorited: false
         )
         
-        for num in 0..<70 {
-            document.title = "Título do documento nº\(num+1) !!!!"
-            self.documents.append(document)
+        if MocData.allDocuments[0] == nil {
+            MocData.allDocuments[0] = [document]
+            self.documents = [document]
         }
-        
+                
         self.documents[0].isFavorited = true
     }
 

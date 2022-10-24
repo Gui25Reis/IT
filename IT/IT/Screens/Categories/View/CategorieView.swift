@@ -5,6 +5,14 @@ import UIKit
 
 class CategorieView: UIView {
     
+    public func reloadCollectionData() {
+        self.selectedCategoriesCollection.reloadData()
+        self.selectedCategoriesCollection.reloadInputViews()
+        
+        self.allCategoriesCollection.reloadData()
+        self.allCategoriesCollection.reloadInputViews()
+    }
+    
     /* MARK: - Atributos */
     
     // Views
@@ -20,21 +28,36 @@ class CategorieView: UIView {
     
     private let selectedCategoriesLabel = CustomViews.newLabel()
     
-    private let selectedCategoriesCollection: UICollectionView = {
+    public let selectedCategoriesCollection: UICollectionView = {
         let cv = CustomViews.newCollection()
-        cv.backgroundColor = .orange
+        // cv.backgroundColor = .orange
         return cv
     }()
     
     
     private let allCategoriesLabel = CustomViews.newLabel()
     
-    private let allCategoriesCollection: UICollectionView = {
+    public let allCategoriesCollection: UICollectionView = {
         let cv = CustomViews.newCollection()
-        cv.backgroundColor = .red
+        // cv.backgroundColor = .red
         return cv
     }()
     
+    private let collectionLayout: UICollectionViewFlowLayout = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
+        layout.itemSize = CGSize(width: 150, height: 40)
+        
+        return layout
+    }()
+    
+    private let collectionLayout2: UICollectionViewFlowLayout = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
+        layout.itemSize = CGSize(width: 150, height: 40)
+        
+        return layout
+    }()
     
     
     // Outros
@@ -62,6 +85,13 @@ class CategorieView: UIView {
         
         self.setupViews()
         self.setupConstraints()
+        
+        
+        self.allCategoriesCollection.register(TagCell.self, forCellWithReuseIdentifier: TagCell.identifier)
+        self.selectedCategoriesCollection.register(TagCell.self, forCellWithReuseIdentifier: TagCell.identifier)
+        
+        self.allCategoriesCollection.collectionViewLayout = self.collectionLayout
+        self.selectedCategoriesCollection.collectionViewLayout = self.collectionLayout2
     }
     
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}

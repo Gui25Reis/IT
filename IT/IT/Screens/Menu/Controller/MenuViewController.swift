@@ -16,7 +16,14 @@ class MenuViewController: UIViewController, MenuViewControllerDelegate {
     /* Outros */
     
     /// Define qual eh o grupo que está selecionado no momento
-    private var groupSelected: Int?
+    private var groupSelected: Int? {
+        didSet {
+            if let groupSelected {
+                self.documentsDataSource.documents = MocData.allDocuments[groupSelected]!
+                self.reloadDocumentsAction()
+            }
+        }
+    }
     
     
     /* Delegates & DataSource */
@@ -86,7 +93,7 @@ class MenuViewController: UIViewController, MenuViewControllerDelegate {
         
         self.present(vc, animated: false)
     }
-    
+        
     
     
     /* MARK: - Ações de botões */
@@ -122,7 +129,7 @@ class MenuViewController: UIViewController, MenuViewControllerDelegate {
     /// Ação de atualizar a view com e os dados das tabelas e collections
     @objc private func reloadDocumentsAction() -> Void {
         self.myView.reloadDocuments()
-        self.reloadGroupCollection()
+        //self.reloadGroupCollection()
         self.reloadInputViews()
         self.myView.reloadInputViews()
     }
@@ -167,10 +174,11 @@ class MenuViewController: UIViewController, MenuViewControllerDelegate {
     
     /// Dados para fazer teste enquanto nào é criado o Core Data
     private func setupTestGroupData() -> Void {
-        let tag = TagConfig(text: "Academy", color: nil)
+        let tag = TagConfig(text: "Mackenzie", color: nil)
         
-        for _ in 0..<5 {
-            EditGroupController.groups.append(tag)
-        }
+        EditGroupController.groups.append(tag)
+//        for _ in 0..<5 {
+//            EditGroupController.groups.append(tag)
+//        }
     }
 }
