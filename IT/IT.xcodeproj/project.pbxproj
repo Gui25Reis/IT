@@ -201,13 +201,6 @@
 			path = DataSource;
 			sourceTree = "<group>";
 		};
-		220D86B52877765100F63E73 /* Protocol */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Protocol;
-			sourceTree = "<group>";
-		};
 		220D86BF2878158500F63E73 /* Delegate */ = {
 			isa = PBXGroup;
 			children = (
@@ -287,7 +280,7 @@
 			path = Protocol;
 			sourceTree = "<group>";
 		};
-		2225C4982887B5A00028C376 /* Docuemnt */ = {
+		2225C4982887B5A00028C376 /* Document */ = {
 			isa = PBXGroup;
 			children = (
 				2225C49D2887B5E00028C376 /* Protocol */,
@@ -296,7 +289,7 @@
 				2225C49A2887B5D00028C376 /* View */,
 				2225C4992887B5CB0028C376 /* Controller */,
 			);
-			path = Docuemnt;
+			path = Document;
 			sourceTree = "<group>";
 		};
 		2225C4992887B5CB0028C376 /* Controller */ = {
@@ -634,7 +627,6 @@
 				22B765832876360600BE6ED1 /* IT.entitlements */,
 				224CA0AC28AF1363001B9DBF /* Extensions */,
 				22B765822876337F00BE6ED1 /* Design Pattern */,
-				220D86B52877765100F63E73 /* Protocol */,
 				22B765772876302500BE6ED1 /* Delegate */,
 				223EB4912876F469006BD32F /* Model */,
 				22B7659528766E4F00BE6ED1 /* Views */,
@@ -667,7 +659,7 @@
 				22B7656E2876301A00BE6ED1 /* LaunchScreen.storyboard */,
 				22B7657A2876306600BE6ED1 /* Menu */,
 				220F95AD287941C800A1D30F /* NewGroup */,
-				2225C4982887B5A00028C376 /* Docuemnt */,
+				2225C4982887B5A00028C376 /* Document */,
 				220612C028925FE00088B646 /* LinkSetup */,
 				2298B40128A31D7E00AF4AE7 /* Categories */,
 				2232980428AAF8510057E674 /* CategorieSetup */,

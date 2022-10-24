@@ -135,7 +135,7 @@ class MenuViewController: UIViewController, MenuViewControllerDelegate {
     private func setupDelegates() -> Void {
         // Collection de documentos
         self.documentsDelegate.setDelegate(self)
-        self.myView.setDocumentsCollectionDelegate(with: self.documentsDelegate)
+        self.myView.setDocumentsCollectionDelegate(with: self.documentsDelegate) // collection.delegate = self.documentsDelegate
         
         self.myView.setDocumentsCollectionDataSource(with: self.documentsDataSource)
         

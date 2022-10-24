@@ -42,7 +42,7 @@ class DocumentCDManeger {
         if self.mainContext.hasChanges {
             do {
                 try self.mainContext.save()
-            } catch(let errorGenerated) {
+            } catch (let errorGenerated) {
                 print("Erro na hora de salvar \(errorGenerated)")
                 fatalError("Unresolved error \(errorGenerated)")
             }
